@@ -115,7 +115,7 @@ class Database {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //Check if the password matches
-        if($result['adminPassword'] === $adminPassword){
+        if($result['adminPassword'] === $password){
             return true;
         } else {
             return false;
@@ -136,7 +136,7 @@ class Database {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //Check if the password matches
-        if($result['doctorPassword'] === $doctorPassword){
+        if($result['doctorPassword'] === $password){
             return true;
         } else {
             return false;
@@ -157,7 +157,7 @@ class Database {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //Check if the password matches
-        if($result['companyPassword'] === $companyPassword){
+        if($result['companyPassword'] === $password){
             return true;
         } else {
             return false;
@@ -178,7 +178,7 @@ class Database {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //Check if the password matches
-        if($result['pharmacyPassword'] === $pharmacyPassword){
+        if($result['pharmacyPassword'] === $password){
             return true;
         } else {
             return false;
@@ -199,7 +199,7 @@ class Database {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         //Check if the password matches
-        if($result['staffPassword'] === $staffPassword){
+        if($result['staffPassword'] === $password){
             return true;
         } else {
             return false;

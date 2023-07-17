@@ -56,13 +56,13 @@ if ($entity === 'pharmaceuticalcompanies') {
         // Initialize session and session vars
         $_SESSION['username'] = $ID;
         $_SESSION['entity'] = 'pharmaceuticalCompany';
-        echo "<script>alert('Login Successful')</script>";
+        // echo "<script>alert('Login Successful')</script>";
         // Redirect to patient page
-        echo "<script>window.location.href='../view/pharmaceuticalCompany.php'</script>";
+        // echo "<script>window.location.href='../view/pharmaceuticalCompany.php'</script>";
         // exit();
     } else {
-        echo "<script>alert('Pharmaceutical Company doesn't exist or incorrect password')</script>";
-        echo "<script>window.location.href='../view/login.php'</script>";
+        // echo "<script>alert('Pharmaceutical Company doesn't exist or incorrect password')</script>";
+        // echo "<script>window.location.href='../view/login.php'</script>";
     }
 }
 
@@ -73,13 +73,13 @@ if ($entity === 'pharmacies') {
         // Initialize session and session vars
         $_SESSION['username'] = $ID;
         $_SESSION['entity'] = $entity;
-        echo "<script>alert('Login Successful')</script>";
+        // echo "<script>alert('Login Successful')</script>";
         // Redirect to patient page
-        echo "<script>window.location.href='../view/pharmacy.php'</script>";
+        // echo "<script>window.location.href='../view/pharmacy.php'</script>";
         // exit();
     } else {
-        echo "<script>alert('Pharmacy doesn't exist or incorrect password')</script>";
-        echo "<script>window.location.href='../view/login.php'</script>";
+        // echo "<script>alert('Pharmacy doesn't exist or incorrect password')</script>";
+        // echo "<script>window.location.href='../view/login.php'</script>";
     }
 }
 
