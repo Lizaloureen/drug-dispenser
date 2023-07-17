@@ -400,5 +400,18 @@ class Database {
         $stmt->execute();
     }
 
+    // get drugs
+    function getDrugs(){
+        // Prepare statement
+        $stmt = $this->connection->prepare("SELECT * FROM drugs");
+    
+        // Execute statement
+        $stmt->execute();
+    
+        // Fetch data
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
 }
 ?>
