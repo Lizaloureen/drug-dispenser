@@ -40,8 +40,8 @@
 <body>
   <form action="../config/login.php" method="POST">
     <div class="container">
-      <label for="SSN"><b>SSN</b></label>
-      <input type="number" placeholder="Enter SSN" name="SSN" required>
+      <label for="ID"><b>Username(ID)</b></label>
+      <input type="number" placeholder="Enter ID" name="ID" required>
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter password" name="password" required>
       <button type="submit">Login</button>
