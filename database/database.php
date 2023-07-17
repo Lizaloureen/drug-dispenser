@@ -251,7 +251,7 @@ class Database {
 
     // Dispense drug
     function dispense($ID){
-        $stmt = $this->connection->prepare("DELETE FROM drugs where ID = :ID");
+        $stmt = $this->connection->prepare("UPDATE drugs SET drugQuantity = drugQuantity - 1 WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
 
         // Execute statement
