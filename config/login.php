@@ -35,7 +35,6 @@ if ($entity === "patients") {
 if ($entity === 'doctors') {
     $ID = $_POST['ID'];
     $password = $_POST['password'];
-    echo "<script>alert('Checkpoint 1')</script>";
     if ($database->doctorLogin($ID, $password)) {
         // Initialize session and session vars
         $_SESSION['username'] = $ID;
