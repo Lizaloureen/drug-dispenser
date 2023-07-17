@@ -38,7 +38,7 @@
   </style>
 </head>
 <body>
-  <form action="../config/login.php" method="post">
+  <form action="../config/login.php" method="POST">
     <div class="container">
       <label for="SSN"><b>SSN</b></label>
       <input type="number" placeholder="Enter SSN" name="SSN" required>
@@ -48,9 +48,12 @@
 
 
       <select name="entity" id="entity">
-        <option value="Select entity" disabled>Seect Entity</option>
+        <option value="Select entity" disabled>Select Entity</option>
         <option value="patient">Patient</option>
         <option value="doctor">Doctor</option>
+        <option value="admin">Admin</option>
+        <option value="pharmacy">Pharmacy</option>
+        <option value="pharmaceuticalCompany">Pharmaceutical Company</option>
       </select>
 
     </div>

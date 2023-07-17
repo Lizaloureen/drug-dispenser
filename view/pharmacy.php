@@ -19,13 +19,13 @@
           <div class="menu">
             <li>
               <?php 
-              // session_start();
-              // $username = $_SESSION['username'];
-              // echo "Welcome, $username";
+              session_start();
+              $username = $_SESSION['username'];
+              echo "Welcome, $username";
               ?>
               </li>
-              <li><a href="../Templates/homepage.html">Home</a></li>
-              <li><a href="../config/signout.php">Sign Out</a></li>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Sign Out</a></li>
           </div>
       </ul>
   </nav>
@@ -80,22 +80,22 @@
   
         echo '</table>';
 
-        // $total_results = $database->getTotalUsersByEntity($entity); // Get total number of users for the entity
-        // $total_pages = ceil($total_results / $results_per_page); // Calculate total number of pages
+        $total_results = $database->getTotalUsersByEntity($entity); // Get total number of users for the entity
+        $total_pages = ceil($total_results / $results_per_page); // Calculate total number of pages
 
-        // echo '<div style="margin-top: 20px;">';
+        echo '<div style="margin-top: 20px;">';
 
-        // if ($current_page > 1) {
-        //   echo '<a href="../view/pharmacy.php?entity=' . $entity . '&page=' . ($current_page - 1) . '" style="display: inline-block; padding: 8px 16px; text-decoration: none; color: #333; border: 1px solid #ddd; margin-right: 5px;">Previous</a>';
-        // }
+        if ($current_page > 1) {
+          echo '<a href="../view/pharmacy.php?entity=' . $entity . '&page=' . ($current_page - 1) . '" style="display: inline-block; padding: 8px 16px; text-decoration: none; color: #333; border: 1px solid #ddd; margin-right: 5px;">Previous</a>';
+        }
 
-        // for ($i = 1; $i <= $total_pages; $i++) {
-        //   echo '<a href="../view/pharmacy.php?entity=' . $entity . '&page=' . $i . '" style="display: inline-block; padding: 8px 16px; text-decoration: none; color: #333; border: 1px solid #ddd; margin-right: 5px;">' . $i . '</a>';
-        // }
+        for ($i = 1; $i <= $total_pages; $i++) {
+          echo '<a href="../view/pharmacy.php?entity=' . $entity . '&page=' . $i . '" style="display: inline-block; padding: 8px 16px; text-decoration: none; color: #333; border: 1px solid #ddd; margin-right: 5px;">' . $i . '</a>';
+        }
 
-        // if ($current_page < $total_pages) {
-        //   echo '<a href="../view/pharmacy.php?entity=' . $entity . '&page=' . ($current_page + 1) . '" style="display: inline-block; padding: 8px 16px; text-decoration: none; color: #333; border: 1px solid #ddd; margin-right: 5px;">Next</a>';
-        // }
+        if ($current_page < $total_pages) {
+          echo '<a href="../view/pharmacy.php?entity=' . $entity . '&page=' . ($current_page + 1) . '" style="display: inline-block; padding: 8px 16px; text-decoration: none; color: #333; border: 1px solid #ddd; margin-right: 5px;">Next</a>';
+        }
 
         echo '</div>';
 

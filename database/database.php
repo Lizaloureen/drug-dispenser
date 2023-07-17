@@ -21,10 +21,10 @@ class Database {
     }
 
     // Patient signup
-    public function patientSignup($patientssn, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender){
+    public function patientSignup($patientID, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender){
         try {
-            $stmt = $this->connection->prepare("INSERT INTO patient (patientssn, Name, phoneNumber, password, address, Gender) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$patientssn, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender]);
+            $stmt = $this->connection->prepare("INSERT INTO patient (patientID, Name, phoneNumber, password, address, Gender) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$patientID, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender]);
             return true; // Return true if the signup was successful
         } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -33,10 +33,10 @@ class Database {
     }
 
     // Doctor signup
-    public function doctorSignup($docSSN, $doctorName, $doctorPhoneNumber, $Dpassword, $doctorAddress, $doctorGender){
+    public function doctorSignup($docID, $doctorName, $doctorPhoneNumber, $Dpassword, $doctorAddress, $doctorGender){
         try {
-            $stmt = $this->connection->prepare("INSERT INTO doctor (docssn, Name, phoneNumber, password, address, Gender) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$docSSN, $doctorName, $doctorPhoneNumber, $Dpassword, $doctorAddress, $doctorGender]);
+            $stmt = $this->connection->prepare("INSERT INTO doctor (docID, Name, phoneNumber, password, address, Gender) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$docID, $doctorName, $doctorPhoneNumber, $Dpassword, $doctorAddress, $doctorGender]);
             return true; // Return true if the signup was successful
         } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -45,10 +45,10 @@ class Database {
     }
 
     // Pharmaceutical Company signup
-    public function PharmaceuticalCompanySignup($pcSSN, $pcName, $address, $PhoneNo, $pharmaceuticalPassword){
+    public function PharmaceuticalCompanySignup($pcID, $pcName, $address, $PhoneNo, $pharmaceuticalPassword){
         try {
-            $stmt = $this->connection->prepare("INSERT INTO pharmaceuticalcompany(pcSSN, pcName, address, PhoneNo, Password) VALUES (?, ?, ?, ?, ?)");
-            $stmt->execute([$pcSSN, $pcName, $address, $PhoneNo, $pharmaceuticalPassword]);
+            $stmt = $this->connection->prepare("INSERT INTO pharmaceuticalcompany(pcID, pcName, address, PhoneNo, Password) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$pcID, $pcName, $address, $PhoneNo, $pharmaceuticalPassword]);
             return true; // Return true if the signup was successful
         } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -57,10 +57,10 @@ class Database {
     }
 
     // Pharmacy signup
-    public function PharmacySignup($pharmacyName, $phSSN, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword){
+    public function PharmacySignup($pharmacyName, $phID, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword){
         try {
-            $stmt = $this->connection->prepare("INSERT INTO pharmacy (Name, phSSN, phoneNo, profitPercentage, drugTradeName, address, Password) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$pharmacyName, $phSSN, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword]);
+            $stmt = $this->connection->prepare("INSERT INTO pharmacy (Name, phID, phoneNo, profitPercentage, drugTradeName, address, Password) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$pharmacyName, $phID, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword]);
             return true; // Return true if the signup was successful
         } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -80,15 +80,15 @@ class Database {
         }        
     }
 
-    //Login using SSN and password for patients
+    //Login using ID and password for patients
     public function patientLogin($ID, $password)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM patient WHERE patientssn = ?");
-            $stmt->execute([$SSN]);
+            $stmt = $this->connection->prepare("SELECT * FROM patient WHERE patientID = ?");
+            $stmt->execute([$ID]);
             $result = $stmt->fetch();
 
-            // Verify if a patient was found with the provided SSN
+            // Verify if a patient was found with the provided ID
             if ($result) {
                 // Verify the password using password_verify() function
                 if (password_verify($password, $result['password'])) {
@@ -103,15 +103,15 @@ class Database {
         }        
     }
 
-    // Login using SSN and password for doctors
-    public function doctorLogin($SSN, $password)
+    //Login using ID and password for patients
+    public function adminLogin($ID, $password)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM doctor WHERE docssn = ?");
-            $stmt->execute([$SSN]);
+            $stmt = $this->connection->prepare("SELECT * FROM admins WHERE ID = ?");
+            $stmt->execute([$ID]);
             $result = $stmt->fetch();
 
-            // Verify if a doctor was found with the provided SSN
+            // Verify if a patient was found with the provided ID
             if ($result) {
                 // Verify the password using password_verify() function
                 if (password_verify($password, $result['password'])) {
@@ -126,15 +126,15 @@ class Database {
         }        
     }
 
-    //Login using SSN and password for pharmaceutical companies
-    public function pharmaceuticalcompanyLogin($SSN, $password)
+    // Login using ID and password for doctors
+    public function doctorLogin($ID, $password)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM pharmaceuticalcompany WHERE pcSSN = ?");
-            $stmt->execute([$SSN]);
+            $stmt = $this->connection->prepare("SELECT * FROM doctor WHERE ID = ?");
+            $stmt->execute([$ID]);
             $result = $stmt->fetch();
 
-            // Verify if a pharmaceutical company was found with the provided SSN
+            // Verify if a doctor was found with the provided ID
             if ($result) {
                 // Verify the password using password_verify() function
                 if (password_verify($password, $result['password'])) {
@@ -149,15 +149,15 @@ class Database {
         }        
     }
 
-    //Login using SSN and password for pharmacies
-    public function pharmacyLogin($SSN, $password)
+    //Login using ID and password for pharmaceutical companies
+    public function pharmaceuticalcompanyLogin($ID, $password)
     {
         try {
-            $stmt = $this->connection->prepare("SELECT * FROM pharmacy WHERE phSSN = ?");
-            $stmt->execute([$SSN]);
+            $stmt = $this->connection->prepare("SELECT * FROM pharmaceuticalcompany WHERE ID = ?");
+            $stmt->execute([$ID]);
             $result = $stmt->fetch();
 
-            // Verify if a pharmacy was found with the provided SSN
+            // Verify if a pharmaceutical company was found with the provided ID
             if ($result) {
                 // Verify the password using password_verify() function
                 if (password_verify($password, $result['password'])) {
@@ -172,7 +172,30 @@ class Database {
         }        
     }
 
-    //Login using SSN and password for staff
+    //Login using ID and password for pharmacies
+    public function pharmacyLogin($ID, $password)
+    {
+        try {
+            $stmt = $this->connection->prepare("SELECT * FROM pharmacy WHERE ID = ?");
+            $stmt->execute([$ID]);
+            $result = $stmt->fetch();
+
+            // Verify if a pharmacy was found with the provided ID
+            if ($result) {
+                // Verify the password using password_verify() function
+                if (password_verify($password, $result['password'])) {
+                    return true; // Return true if login is successful
+                }
+            }
+
+            return false; // Return false if login failed
+        } catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }        
+    }
+
+    //Login using ID and password for staff
     public function staffLogin($staffno, $password)
     {
         try {
@@ -180,7 +203,7 @@ class Database {
             $stmt->execute([$staffno]);
             $result = $stmt->fetch();
 
-            // Verify if a staff member was found with the provided SSN
+            // Verify if a staff member was found with the provided ID
             if ($result) {
                 // Verify the password using password_verify() function
                 if (password_verify($password, $result['password'])) {
@@ -244,9 +267,9 @@ class Database {
         }
     }
 
-    function getPatientBySSN($SSN){
-        $stmt = $this->connection->prepare("SELECT * FROM patients WHERE SSN = :SSN");
-        $stmt->bindParam(':SSN', $SSN);
+    function getPatientByID($ID){
+        $stmt = $this->connection->prepare("SELECT * FROM patients WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
     
         // Execute statement
         $stmt->execute();
@@ -256,7 +279,7 @@ class Database {
         return $result;
     }
 
-    function addPrescription($patientID, $doctorSSN, $prescriptionDate, $prescriptionDuration, $prescriptionNotes){
+    function addPrescription($patientID, $doctorID, $prescriptionDate, $prescriptionDuration, $prescriptionNotes){
         //Prepare statement
         $stmt = $this->connection->prepare("INSERT INTO prescriptions (patientID, doctorID, prescriptionDate, prescriptionDuration, prescriptionNotes) VALUES (:patientID, :doctorID, :prescriptionDate, :prescriptionDuration, :prescriptionNotes)");
         $stmt->bindParam(':patientID', $patientID);
@@ -276,7 +299,7 @@ class Database {
         }
     }
 
-    function getUsersByEntityAndIDForDoctor($entity, $doctorSSN, $start_index, $results_per_page){
+    function getUsersByEntityAndIDForDoctor($entity, $doctorID, $start_index, $results_per_page){
         // Prepare statement
         $stmt = $this->connection->prepare("SELECT * FROM prescriptions WHERE doctorID = :doctorID LIMIT :start_index, :results_per_page");
         $stmt->bindParam(':doctorID', $doctorID);
@@ -291,7 +314,7 @@ class Database {
         return $result;
     }
 
-    function getUsersByEntityAndIDForPatient($entity, $SSN, $start_index, $results_per_page){
+    function getUsersByEntityAndIDForPatient($entity, $ID, $start_index, $results_per_page){
         // Prepare statement
         $stmt = $this->connection->prepare("SELECT * FROM prescriptions WHERE patientID = :ID LIMIT :start_index, :results_per_page");
         $stmt->bindParam(':ID', $ID);

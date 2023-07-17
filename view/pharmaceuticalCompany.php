@@ -23,8 +23,8 @@
             echo "Welcome, $username";
             ?>
             </li>
-            <li><a href="../view/homepage.php">Home</a></li>
-            <li><a href="../config/signout.php">Sign Out</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sign Out</a></li>
         </div>
     </ul>
 </nav>
