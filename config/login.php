@@ -1,5 +1,7 @@
 <?php
 
+echo "<script>alert('Checkpoint 1. Inside login backend file')</script>";
+
 session_start();
 
 require_once("../database/database.php");
@@ -7,12 +9,14 @@ require_once("../database/database.php");
 $database = new Database();
 
 if (isset($_POST['login'])) {
+    echo "<script>alert('Checkpoint 2. Inside login button condition')</script>";
     $ID = $_POST['ID'];
     $password = $_POST['password'];
     $entity = $_POST['entity'];
 
     if ($entity === 'patient') {
         if ($database->patientLogin($ID, $password)) {
+            echo "<script>alert('Checkpoint 3. Inside login patient condition')</script>";
             // Initialize session and session vars
             $_SESSION['username'] = $ID;
             $_SESSION['entity'] = 'patients';
