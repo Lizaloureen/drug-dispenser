@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
             $_SESSION['entity'] = 'doctors';
             echo "<script>alert('Login Successful')</script>";
             // Redirect to doctor page
-            echo "<script>window.location.href='../view/patient.php'</script>";
+            echo "<script>window.location.href='../view/doctor.php'</script>";
             // exit();
         } else {
             echo "<script>alert('Doctor doesn't exist or incorrect password')</script>";
@@ -63,7 +63,7 @@ if (isset($_POST['login'])) {
             $_SESSION['entity'] = 'pharmacies';
             echo "<script>alert('Login Successful')</script>";
             // Redirect to patient page
-            echo "<script>window.location.href='../view/pharmaceuticalCompany.php'</script>";
+            echo "<script>window.location.href='../view/pharmacy.php'</script>";
             // exit();
         } else {
             echo "<script>alert('Pharmacy doesn't exist or incorrect password')</script>";
