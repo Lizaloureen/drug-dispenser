@@ -81,26 +81,24 @@ class Database {
     }
 
     //Login using ID and password for patients
-    public function patientLogin($ID, $password)
-    {
-        try {
-            $stmt = $this->connection->prepare("SELECT * FROM patient WHERE patientID = ?");
-            $stmt->execute([$ID]);
-            $result = $stmt->fetch();
+    // Checking whether a patient exists and confirming their password
+    function patientLogin($ID, $patientPassword){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT patientPassword FROM patients WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
 
-            // Verify if a patient was found with the provided ID
-            if ($result) {
-                // Verify the password using password_verify() function
-                if (password_verify($password, $result['password'])) {
-                    return true; // Return true if login is successful
-                }
-            }
+        //Execute statement
+        $stmt->execute();
 
-            return false; // Return false if login failed
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Check if the password matches
+        if($result['patientPassword'] === $patientPassword){
+            return true;
+        } else {
             return false;
-        }        
+        }
     }
 
     //Login using ID and password for patients

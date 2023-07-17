@@ -2,7 +2,10 @@
 <html>
 <head>
   <title>Login Form</title>
-  <style>
+  <link rel="stylesheet" href="../Static/login.css">
+  <link rel="stylesheet" href="../Static/form.scss">
+  <title>Login</title>
+  <!-- <style>
     .container {
       width: 300px;
       padding: 16px;
@@ -35,28 +38,35 @@
     .container {
       padding: 16px;
     }
-  </style>
+  </style> -->
 </head>
 <body>
-  <form action="../config/login.php" method="POST">
-    <div class="container">
-      <label for="ID"><b>Username(ID)</b></label>
-      <input type="number" placeholder="Enter ID" name="ID" required>
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter password" name="password" required>
-      <input type="submit" value="login" />
-
-
-      <select name="entity" id="entity">
-        <option value="Select entity" disabled>Select Entity</option>
-        <option value="patient">Patient</option>
-        <option value="doctor">Doctor</option>
-        <option value="admin">Admin</option>
-        <option value="pharmacy">Pharmacy</option>
-        <option value="pharmaceuticalCompany">Pharmaceutical Company</option>
-      </select>
-
-    </div>
-  </form>
+  <div class="card">
+    <form class="card-form" method="POST" action="../config/login.php">
+			<div class="input">
+				<input type="text" class="input-field" name="ID"  required/>
+				<label class="input-label">Username</label>
+			</div>
+            <div class="input">
+                <input type="password" class="input-field" name="password" required/>
+                <label class="input-label">Password</label>
+            </div>
+            <div class="input">
+                <select name="entity" id="entity" class="input-field" value="">
+                    <option value="" class="input" disabled selected>Select Entity</option>
+                    <option value="doctors" class="input">Doctor</option>
+                    <option value="patients" class="input">Patient</option>
+                    <option value="supervisors" class="input">Supervisor</option>
+                    <option value="companies" class="input">Pharmaceutical</option>
+                    <option value="pharmacies" class="input">Pharmacy</option>
+                    <option value="admins" class="input">Admin</option>
+                </select>
+				<label class="input-label">Entity</label>
+			</div>
+            <div class="action">
+                <input type="submit" class="action-button" value="Login" />
+            </div>
+      </form>
+  </div>
 </body>
 </html>
