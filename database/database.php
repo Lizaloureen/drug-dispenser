@@ -104,114 +104,104 @@ class Database {
     //Login using ID and password for patients
     public function adminLogin($ID, $password)
     {
-        try {
-            $stmt = $this->connection->prepare("SELECT * FROM admins WHERE ID = ?");
-            $stmt->execute([$ID]);
-            $result = $stmt->fetch();
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
 
-            // Verify if a patient was found with the provided ID
-            if ($result) {
-                // Verify the password using password_verify() function
-                if (password_verify($password, $result['password'])) {
-                    return true; // Return true if login is successful
-                }
-            }
+        //Execute statement
+        $stmt->execute();
 
-            return false; // Return false if login failed
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Check if the password matches
+        if($result['adminPassword'] === $adminPassword){
+            return true;
+        } else {
             return false;
-        }        
+        } 
     }
 
     // Login using ID and password for doctors
     public function doctorLogin($ID, $password)
     {
-        try {
-            $stmt = $this->connection->prepare("SELECT * FROM doctor WHERE ID = ?");
-            $stmt->execute([$ID]);
-            $result = $stmt->fetch();
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT doctorPassword FROM doctors WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
 
-            // Verify if a doctor was found with the provided ID
-            if ($result) {
-                // Verify the password using password_verify() function
-                if (password_verify($password, $result['password'])) {
-                    return true; // Return true if login is successful
-                }
-            }
+        //Execute statement
+        $stmt->execute();
 
-            return false; // Return false if login failed
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Check if the password matches
+        if($result['doctorPassword'] === $doctorPassword){
+            return true;
+        } else {
             return false;
-        }        
+        }       
     }
 
     //Login using ID and password for pharmaceutical companies
     public function pharmaceuticalcompanyLogin($ID, $password)
     {
-        try {
-            $stmt = $this->connection->prepare("SELECT * FROM pharmaceuticalcompany WHERE ID = ?");
-            $stmt->execute([$ID]);
-            $result = $stmt->fetch();
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT companyPassword FROM companies WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
 
-            // Verify if a pharmaceutical company was found with the provided ID
-            if ($result) {
-                // Verify the password using password_verify() function
-                if (password_verify($password, $result['password'])) {
-                    return true; // Return true if login is successful
-                }
-            }
+        //Execute statement
+        $stmt->execute();
 
-            return false; // Return false if login failed
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Check if the password matches
+        if($result['companyPassword'] === $companyPassword){
+            return true;
+        } else {
             return false;
-        }        
+        }    
     }
 
     //Login using ID and password for pharmacies
     public function pharmacyLogin($ID, $password)
     {
-        try {
-            $stmt = $this->connection->prepare("SELECT * FROM pharmacy WHERE ID = ?");
-            $stmt->execute([$ID]);
-            $result = $stmt->fetch();
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
 
-            // Verify if a pharmacy was found with the provided ID
-            if ($result) {
-                // Verify the password using password_verify() function
-                if (password_verify($password, $result['password'])) {
-                    return true; // Return true if login is successful
-                }
-            }
+        //Execute statement
+        $stmt->execute();
 
-            return false; // Return false if login failed
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Check if the password matches
+        if($result['pharmacyPassword'] === $pharmacyPassword){
+            return true;
+        } else {
             return false;
-        }        
+        }         
     }
 
     //Login using ID and password for staff
     public function staffLogin($staffno, $password)
     {
-        try {
-            $stmt = $this->connection->prepare("SELECT * FROM staff WHERE staffno = ?");
-            $stmt->execute([$staffno]);
-            $result = $stmt->fetch();
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT staffPassword FROM staff WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
 
-            // Verify if a staff member was found with the provided ID
-            if ($result) {
-                // Verify the password using password_verify() function
-                if (password_verify($password, $result['password'])) {
-                    return true; // Return true if login is successful
-                }
-            }
+        //Execute statement
+        $stmt->execute();
 
-            return false; // Return false if login failed
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Check if the password matches
+        if($result['staffPassword'] === $staffPassword){
+            return true;
+        } else {
             return false;
         }        
     }
