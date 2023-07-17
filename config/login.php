@@ -15,23 +15,20 @@ $database = new Database();
 $entity = $_POST['entity'];
 
 if ($entity === "patients") {
-    echo "<script>alert('Checkpoint 2)</script>";
 
     $ID = $_POST['ID'];
     $password = $_POST['password'];
     if ($database->patientLogin($ID, $password)) {
-        echo "<script>alert('Checkpoint 3. Inside login patient condition')</script>";
         // Initialize session and session vars
         $_SESSION['username'] = $ID;
         $_SESSION['entity'] = $entity;
-        echo "<script>alert('Checkpoint 4. Inside login patient condition')</script>";
         echo "<script>alert('Login Successful')</script>";
         // Redirect to patient page
         echo "<script>window.location.href='../view/patient.php'</script>";
         // exit();
     } else {
         echo "<script>alert('Patient doesn't exist or incorrect password');</script>";
-        // echo "<script>window.location.href='../view/login.php'</script>";
+        echo "<script>window.location.href='../view/login.php'</script>";
     }
 }
 
