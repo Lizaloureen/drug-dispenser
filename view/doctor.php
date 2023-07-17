@@ -31,7 +31,7 @@
 </div>
 
 
-	
+
 
 <?php
         require_once '../database/database.php';
@@ -101,7 +101,7 @@
 
               <!-- getting the drug names from the db -->
               <div class="input">
-                <select name="  drugID" id="drugID" class="input-field" value="">
+                <select name="drugID" id="drugID" class="input-field" value="">
                   <option value="" class="input" disabled selected>Drug Name</option>
                   <?php
                     include_once '../database/database.php';

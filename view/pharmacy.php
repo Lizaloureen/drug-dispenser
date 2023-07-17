@@ -21,7 +21,7 @@
               <?php 
               session_start();
               $username = $_SESSION['username'];
-              echo "Welcome, $username";
+              echo "Welcome $username !";
               ?>
               </li>
               <li><a href="#">Home</a></li>

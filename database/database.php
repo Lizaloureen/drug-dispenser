@@ -209,14 +209,12 @@ class Database {
 
 
 
-    /*
-    *   These are the added functions for the project
-    */
+    // These are the added functions for the project
 
     // get total number of enities in a table
     function getTotalUsersByEntity($entity){
         try {
-            $stmt = $this->connection->prepare("SELECT COUNT(*) FROM $entity");
+            $stmt = $this->connection->prepare("SELECT COUNT(*) FROM $entity ");
             $stmt->execute();
             $result = $stmt->fetch();
             return $result[0];
