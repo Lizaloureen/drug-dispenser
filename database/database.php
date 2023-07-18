@@ -435,7 +435,7 @@ class Database {
         // Prepare statement
         $stmt = $this->connection->prepare("UPDATE patients SET patientFirstName = :patientFirstName, patientLastName = :patientLastName, patientEmail = :patientEmail, patientPassword = :patientPassword, patientPhoneNumber = :patientPhoneNumber, patientAddress = :patientAddress, patientGender = :patientGender, patientDOB = :patientDOB WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
-        $stmt->bindParam(':patientFirstName', $dpatientLastName);
+        $stmt->bindParam(':patientFirstName', $patientLastName);
         $stmt->bindParam(':patientLastName', $patientLastName);
         $stmt->bindParam(':patientEmail', $patientEmail);
         $stmt->bindParam(':patientPassword', $patientPassword);
@@ -443,6 +443,48 @@ class Database {
         $stmt->bindParam(':patientAddress', $patientAddress);
         $stmt->bindParam(':patientGender', $patientGender);
         $stmt->bindParam(':patientDOB', $patientDOB);
+    
+        // Execute statement
+        $stmt->execute();
+    
+        // If it works return true
+        if($stmt){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // delete doctor from the database
+    function deleteDoctor($ID){
+        // Prepare statement
+        $stmt = $this->connection->prepare("DELETE FROM doctors WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
+    
+        // Execute statement
+        $stmt->execute();
+    
+        // If it works return true
+        if($stmt){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // update doctor in the database
+    function updateDoctor($ID, $doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB){
+        // Prepare statement
+        $stmt = $this->connection->prepare("UPDATE doctors SET doctorFirstName = :doctorFirstName, doctorLastName = :doctorLastName, doctorEmail = :doctorEmail, doctorPassword = :doctorPassword, doctorPhoneNumber = :doctorPhoneNumber, doctorAddress = :doctorAddress, doctorGender = :doctorGender, doctorDOB = :doctorDOB WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
+        $stmt->bindParam(':doctorFirstName', $doctorLastName);
+        $stmt->bindParam(':doctorLastName', $doctorLastName);
+        $stmt->bindParam(':doctorEmail', $doctorEmail);
+        $stmt->bindParam(':doctorPassword', $doctorPassword);
+        $stmt->bindParam(':doctorPhoneNumber', $doctorPhoneNumber);
+        $stmt->bindParam(':doctorAddress', $doctorAddress);
+        $stmt->bindParam(':doctorGender', $doctorGender);
+        $stmt->bindParam(':doctorDOB', $doctorDOB);
     
         // Execute statement
         $stmt->execute();
