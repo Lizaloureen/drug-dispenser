@@ -238,9 +238,11 @@ class Database {
     }
 
     // Dispense drug
-    function dispense($ID){
+    function dispense($ID, $drugID, $drugName, $drugQuantity, $patientID, $doctorID){
         $stmt = $this->connection->prepare("UPDATE drugs SET drugQuantity = drugQuantity - 1 WHERE ID = :ID");
+        $stmt1 = $this->connection->prepare("INSERT INTO dispensed (drugID, drugName, drugQuantity, patientID, doctorID) VALUES (?, ?, ?, ?, ?)");
         $stmt->bindParam(':ID', $ID);
+        $stmt1 ->execute([$drugID, $drugName, $drugQuantity, $patientID, $doctorID]);
 
         // Execute statement
         $stmt->execute();
