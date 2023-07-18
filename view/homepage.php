@@ -10,10 +10,10 @@
         <ul class="menu">
             <li><a href="#">Home</a></li>
             <li class="services">
-                <a href="#">Services</a>
-                <ul class="dropdown">
-                    <li><a href="C:\xampp1\htdocs\drug dispensing\drug-dispenser\view\login.php">Login</a></li>
-                    <li><a href="C:\xampp1\htdocs\drug dispensing\drug-dispenser\config\signup.php">Sign Up</a></li>
+            <a href="#">Services</a>
+                <ul class="dropdown" id="servicesDropdown">
+                    <li><a href="C:\xampp1\htdocs\drug dispensing\drug-dispenser\view\login.php" title = "Login Page" target = "_blank">Login</a></li>
+                    <li><a href="C:\xampp1\htdocs\drug dispensing\drug-dispenser\config\signup.php" title = "SignUp Page" target = "_blank">Sign Up</a></li>
                 </ul>
             </li>
             <li><a href="#">About Us</a></li>
