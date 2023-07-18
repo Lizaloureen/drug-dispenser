@@ -4,7 +4,7 @@ require_once("connection.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     //patient signup
-    public function patientSignup($patientID, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender){
+    function patientSignup($patientID, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender){
         try {
             $stmt = $this->connection->prepare("INSERT INTO patient (patientID, Name, phoneNumber, password, address, Gender) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute([$patientID, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender]);
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Doctor signup
-    public function doctorSignup($docID, $doctorName, $doctorPhoneNumber, $Dpassword, $doctorAddress, $doctorGender){
+    function doctorSignup($docID, $doctorName, $doctorPhoneNumber, $Dpassword, $doctorAddress, $doctorGender){
         try {
             $stmt = $this->connection->prepare("INSERT INTO doctor (docID, Name, phoneNumber, password, address, Gender) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute([$docID, $doctorName, $doctorPhoneNumber, $Dpassword, $doctorAddress, $doctorGender]);
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Pharmaceutical Company signup
-    public function PharmaceuticalCompanySignup($pcID, $pcName, $address, $PhoneNo, $pharmaceuticalPassword){
+    function PharmaceuticalCompanySignup($pcID, $pcName, $address, $PhoneNo, $pharmaceuticalPassword){
         try {
             $stmt = $this->connection->prepare("INSERT INTO pharmaceuticalcompany(pcID, pcName, address, PhoneNo, Password) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([$pcID, $pcName, $address, $PhoneNo, $pharmaceuticalPassword]);
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Pharmacy signup
-    public function PharmacySignup($pharmacyName, $phID, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword){
+    function PharmacySignup($pharmacyName, $phID, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword){
         try {
             $stmt = $this->connection->prepare("INSERT INTO pharmacy (Name, phID, phoneNo, profitPercentage, drugTradeName, address, Password) VALUES (?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([$pharmacyName, $phID, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword]);
@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Staff signup
-    public function StaffSignup($staffno, $name, $prescriptionno, $salary, $bonus, $staffPassword){
+    function StaffSignup($staffno, $name, $prescriptionno, $salary, $bonus, $staffPassword){
         try {
             $stmt = $this->connection->prepare("INSERT INTO staff (staffno, name, prescriptionno, salary, bonus, Password) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute([$staffno, $name, $prescriptionno, $salary, $bonus, $staffPassword]);

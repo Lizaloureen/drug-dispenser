@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Homepage</title>
-    <link rel="stylesheet" type="text/css" href="C:/xampp1/htdocs/drug dispensing/drug-dispenser/Static/homepage.css">
+    <link rel="stylesheet" type="text/css" href="C:/xampp1/htdocs/drug dispensing/drug-dispenser/Static/homepage.scss">
 </head>
 <body class="body">
     <div class="navbar">
