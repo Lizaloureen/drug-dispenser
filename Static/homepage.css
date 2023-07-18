@@ -111,34 +111,17 @@
   
   
   .carousel__face:nth-child(1) {
-    background-image: url("../images/cPics/pexels-castorly-stock-4058364.jpg");
+    background-image: url("C:/xampp1/htdocs/drug dispensing/drug-dispenser/image1.jpeg");
     transform: rotateY(  0deg) translateZ(430px); }
   .carousel__face:nth-child(2) { 
-    background-image: url("../images/cPics/pexels-karolina-grabowska-4047055.jpg");
+    background-image: url("C:/xampp1/htdocs/drug dispensing/drug-dispenser/image2.jpeg");
       transform: rotateY( 40deg) translateZ(430px); }
   .carousel__face:nth-child(3) {
-    background-image: url("../images/cPics/pexels-mart-production-7089401.jpg");
+    background-image: url("C:/xampp1/htdocs/drug dispensing/drug-dispenser/image3.jpeg");
     transform: rotateY( 80deg) translateZ(430px); }
-  .carousel__face:nth-child(4) {
-    background-image: url("../images/cPics/pexels-pixabay-356040.jpg");
-    transform: rotateY(120deg) translateZ(430px); }
-  .carousel__face:nth-child(5) { 
-    background-image: url("../images/cPics/zz.jpg");
-   transform: rotateY(160deg) translateZ(430px); }
-  .carousel__face:nth-child(6) { 
-    background-image: url("../images/cPics/pexels-rfstudio-3825529.jpg");
-   transform: rotateY(200deg) translateZ(430px); }
-  .carousel__face:nth-child(7) { 
-    background-image: url("../images/cPics/zz2.jpg");
-   transform: rotateY(240deg) translateZ(430px); }
-  .carousel__face:nth-child(8) {
-    background-image: url("../images/cPics/zz3.jpg");
-    transform: rotateY(280deg) translateZ(430px); }
-  .carousel__face:nth-child(9) {
-    background-image: url("../images/cPics/pexels-pixabay-139398.jpg");
-    transform: rotateY(320deg) translateZ(430px); }
+
   
-  
+    
   
   @keyframes rotate360 {
     from {
