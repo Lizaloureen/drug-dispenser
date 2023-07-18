@@ -12,8 +12,8 @@
             <li class="services">
                 <a href="#">Services</a>
                 <ul class="dropdown">
-                    <li>Login</li>
-                    <li>SignUp</li>
+                    <li><a href="C:\xampp1\htdocs\drug dispensing\drug-dispenser\view\login.php">Login</a></li>
+                    <li><a href="C:\xampp1\htdocs\drug dispensing\drug-dispenser\config\signup.php">Sign Up</a></li>
                 </ul>
             </li>
             <li><a href="#">About Us</a></li>
