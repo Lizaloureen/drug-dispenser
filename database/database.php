@@ -413,5 +413,47 @@ class Database {
         return $result;
     }
 
+    // delete patient from the database
+    function deletePatient($ID){
+        // Prepare statement
+        $stmt = $this->connection->prepare("DELETE FROM patients WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
+    
+        // Execute statement
+        $stmt->execute();
+    
+        // If it works return true
+        if($stmt){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // update patients in the database
+    function updatePatient($ID, $patientFirstName, $patientLastName, $patientEmail, $patientPassword, $patientPhoneNumber, $patientAddress, $patientGender, $patientDOB){
+        // Prepare statement
+        $stmt = $this->connection->prepare("UPDATE patients SET patientFirstName = :patientFirstName, patientLastName = :patientLastName, patientEmail = :patientEmail, patientPassword = :patientPassword, patientPhoneNumber = :patientPhoneNumber, patientAddress = :patientAddress, patientGender = :patientGender, patientDOB = :patientDOB WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
+        $stmt->bindParam(':patientFirstName', $dpatientLastName);
+        $stmt->bindParam(':patientLastName', $patientLastName);
+        $stmt->bindParam(':patientEmail', $patientEmail);
+        $stmt->bindParam(':patientPassword', $patientPassword);
+        $stmt->bindParam(':patientPhoneNumber', $patientPhoneNumber);
+        $stmt->bindParam(':patientAddress', $patientAddress);
+        $stmt->bindParam(':patientGender', $patientGender);
+        $stmt->bindParam(':patientDOB', $patientDOB);
+    
+        // Execute statement
+        $stmt->execute();
+    
+        // If it works return true
+        if($stmt){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
 ?>
