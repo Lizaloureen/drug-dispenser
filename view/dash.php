@@ -29,11 +29,20 @@
             case 'viewDrugs':
                 $data = $database->getEntity("drugs");
                 break;
+            case 'registerPatients':
+                $data = $database->getEntity("patients");
+                break;
             case 'registerDoctors':
                 $data = $database->getEntity("doctors");
                 break;
             case 'registerSupervisors':
                 $data = $database->getEntity("supervisors");
+                break;
+            case 'registerPharmacists':
+                $data = $database->getEntity("pharmacies");
+                break;
+            case 'registerAdmins':
+                $data = $database->getEntity("admins");
                 break;
             case 'updateDrugs':
                 $data = $database->getEntity("drugs");
@@ -46,6 +55,12 @@
                 break;
             case 'deleteDrugs':
                 $data = $database->getEntity("drugs");
+                break;
+            case 'deletePatients':
+                $data = $database->getEntity("patients");
+                break;
+            case 'deleteDoctors':                    
+                $data = $database->getEntity("doctors");
                 break;
             default:
                 echo "<script>alert('Error 101');</script>";
@@ -123,8 +138,44 @@
                     <span class="text">View Drugs</span>
                 </a>
             </li>
+            <li>
+                <a href="dash.php?action=registerPatients">
+                    <i class='bx bxs-group' ></i>
+                    <span class="text">Register Patients</span>
+                </a>
+            </li>
+            <li>
+                <a href="dash.php?action=registerDoctors">
+                    <i class='bx bxs-group' ></i>
+                    <span class="text">Register Doctors</span>
+                </a>
+            </li>
+            <li>
+                <a href="dash.php?action=registerSupervisors">
+                    <i class='bx bxs-group' ></i>
+                    <span class="text">Register Supervisors</span>
+                </a>
+            </li>
+            <li>
+                <a href="dash.php?action=registerPharmacists">
+                    <i class='bx bxs-group' ></i>
+                    <span class="text">Register Pharmacists</span>
+                </a>
+            </li>
+            <li>
+                <a href="dash.php?action=registerAdmins">
+                    <i class='bx bxs-group' ></i>
+                    <span class="text">Register Admins</span>
+                </a>
+            </li>
         </ul>
         <ul class="side-menu">
+            <li>
+                <a href="#">
+                    <i class='bx bxs-cog' ></i>
+                    <span class="text">Add Drugs</span>
+                </a>
+            </li>
             <li>
                 <a href="#">
                     <i class='bx bxs-cog' ></i>
@@ -190,7 +241,7 @@
 
                         <?php if($action == 'viewPatients'): ?>
                             <div class="head">
-                                <h3><?php // echo "$action"; ?> Patients</h3>
+                                <h3><?php //echo "$action"; ?> Patients</h3>
                                 <i class='bx bx-search'></i>
                                 <i class='bx bx-filter'></i>
                             </div>
@@ -233,7 +284,7 @@
 
                         <?php if($action == 'viewDoctors'): ?>
                             <div class="head">
-                                <h3><?php // echo "$action"; ?> Doctors</h3>
+                                <h3><?php //echo "$action"; ?> Doctors</h3>
                                 <i class='bx bx-search'></i>
                                 <i class='bx bx-filter'></i>
                             </div>
@@ -277,7 +328,7 @@
 
                         <?php if($action == 'viewCompanies'): ?>
                             <div class="head">
-                                <h3><?php // echo "$action"; ?> Pharmaceutical Companies</h3>
+                                <h3><?php //echo "$action"; ?> Pharmaceutical Companies</h3>
                                 <i class='bx bx-search'></i>
                                 <i class='bx bx-filter'></i>
                             </div>
@@ -316,7 +367,7 @@
 
                         <?php if($action == 'viewPharmacies'): ?>
                             <div class="head">
-                                <h3><?php // echo "$action"; ?> Pharmacies</h3>
+                                <h3><?php //echo "$action"; ?> Pharmacies</h3>
                                 <i class='bx bx-search'></i>
                                 <i class='bx bx-filter'></i>
                             </div>
@@ -355,7 +406,7 @@
 
                         <?php if($action == 'viewDrugs'): ?>
                             <div class="head">
-                                <h3><?php // echo "$action"; ?> Drugs</h3>
+                                <h3><?php //echo "$action"; ?> Drugs</h3>
                                 <i class='bx bx-search'></i>
                                 <i class='bx bx-filter'></i>
                             </div>
@@ -420,7 +471,7 @@
 
                         <?php if($action == 'viewPrescriptions'): ?>
                             <div class="head">
-                                <h3><?php // echo "$action"; ?> Prescriptions</h3>
+                                <h3><?php //echo "$action"; ?> Prescriptions</h3>
                                 <i class='bx bx-search'></i>
                                 <i class='bx bx-filter'></i>
                             </div>
