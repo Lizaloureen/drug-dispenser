@@ -14,10 +14,9 @@ $drugQuantity = $_POST['drugQuantity'];
 $drugExpirationDate = $_POST['drugExpirationDate'];
 $drugManufactureDate = $_POST['drugManufacturingDate'];
 $drugCompany = $_POST['drugCompany'];
-$drugApproved = $_POST['drugApproved'];
 
 // update the drug details
-if ($database->updateDrug($drugID, $drugName, $drugDescription, $drugPrice, $drugQuantity, $drugExpirationDate, $drugManufactureDate, $drugCompany, $drugApproved)) {
+if ($database->updateDrug($drugID, $drugName, $drugDescription, $drugPrice, $drugQuantity, $drugExpirationDate, $drugManufactureDate, $drugCompany)) {
     echo "<script>alert('Drug updated successfully!')</script>";
     echo "<script>window.location.href = '../view/dash.php?action=viewDrugs'</script>";
 } else {
