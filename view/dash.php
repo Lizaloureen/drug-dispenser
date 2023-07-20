@@ -506,6 +506,226 @@
                             </tbody>
                         <?php endif ?>
 
+                        <!--REGISTER PATIENTS-->
+
+                        <?php if($action == 'registerPatients'): ?>
+                            <div class="head">
+                            <form class="card-form" method="post" action="../config/patientSignup.php">
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugName" value="<?php echo $data['drugName']; ?>" required/>
+                                        <label class="input-label">Drug Name</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugDescription" value="<?php echo $data['drugDescription']; ?>" required/>
+                                        <label class="input-label">Drug Description</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" step="0.01" min="0" class="input-field" name="drugPrice" value="<?php echo $data['drugPrice']; ?>" required/>
+                                        <label class="input-label">Drug Price</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" class="input-field" name="drugQuantity" value="<?php echo $data['drugQuantity']; ?>" required/>
+                                        <label class="input-label">Drug Quantity</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugExpirationDate" value="<?php echo $data['drugExpirationDate']; ?>" required/>
+                                        <label class="input-label">Drug Expiration Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugManufacturingDate" value="<?php echo $data['drugManufacturingDate']; ?>" required/>
+                                        <label class="input-label">Drug Manufacturing Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
+                                        <label class="input-label">Drug Company</label>
+                                    </div>
+                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
+                                    <input type="hidden" name="type" value="updateDrug">
+                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
+                                    <div class="action">
+                                        <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
+                                        <input type="hidden" name="type" value="updateDrug">
+                                        <input type="submit" class="action-button" name="updateDrug" value="Update Drug">
+                                    </div>
+                                </form>
+                            </div>
+
+                        <!--REGISTER DOCTORS-->
+
+                        <?php if($action == 'registerDoctors'): ?>
+                            <div class="card">
+                            <form class="card-form" method="post" action="../config/doctorSignup.php">
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugName" value="<?php echo $data['drugName']; ?>" required/>
+                                        <label class="input-label">Drug Name</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugDescription" value="<?php echo $data['drugDescription']; ?>" required/>
+                                        <label class="input-label">Drug Description</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" step="0.01" min="0" class="input-field" name="drugPrice" value="<?php echo $data['drugPrice']; ?>" required/>
+                                        <label class="input-label">Drug Price</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" class="input-field" name="drugQuantity" value="<?php echo $data['drugQuantity']; ?>" required/>
+                                        <label class="input-label">Drug Quantity</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugExpirationDate" value="<?php echo $data['drugExpirationDate']; ?>" required/>
+                                        <label class="input-label">Drug Expiration Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugManufacturingDate" value="<?php echo $data['drugManufacturingDate']; ?>" required/>
+                                        <label class="input-label">Drug Manufacturing Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
+                                        <label class="input-label">Drug Company</label>
+                                    </div>
+                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
+                                    <input type="hidden" name="type" value="updateDrug">
+                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
+                                    <div class="action">
+                                        <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
+                                        <input type="hidden" name="type" value="updateDrug">
+                                        <input type="submit" class="action-button" name="updateDrug" value="Update Drug">
+                                    </div>
+                                </form>
+                            </div>
+
+                        <!--REGISTER SUPERVISORS-->
+
+                        <?php if($action == 'registerSupervisors'): ?>
+                            <div class="card">
+                            <form class="card-form" method="post" action="../config/supervisorSignup.php">
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugName" value="<?php echo $data['drugName']; ?>" required/>
+                                        <label class="input-label">Drug Name</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugDescription" value="<?php echo $data['drugDescription']; ?>" required/>
+                                        <label class="input-label">Drug Description</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" step="0.01" min="0" class="input-field" name="drugPrice" value="<?php echo $data['drugPrice']; ?>" required/>
+                                        <label class="input-label">Drug Price</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" class="input-field" name="drugQuantity" value="<?php echo $data['drugQuantity']; ?>" required/>
+                                        <label class="input-label">Drug Quantity</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugExpirationDate" value="<?php echo $data['drugExpirationDate']; ?>" required/>
+                                        <label class="input-label">Drug Expiration Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugManufacturingDate" value="<?php echo $data['drugManufacturingDate']; ?>" required/>
+                                        <label class="input-label">Drug Manufacturing Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
+                                        <label class="input-label">Drug Company</label>
+                                    </div>
+                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
+                                    <input type="hidden" name="type" value="updateDrug">
+                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
+                                    <div class="action">
+                                        <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
+                                        <input type="hidden" name="type" value="updateDrug">
+                                        <input type="submit" class="action-button" name="updateDrug" value="Update Drug">
+                                    </div>
+                                </form> 
+                            </div>
+
+                        <!--REGISTER PHARMACISTS-->
+
+                        <?php if($action == 'registerPharmacists'): ?>
+                            <div class="card">
+                            <form class="card-form" method="post" action="../config/pharmacySignup.php">
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugName" value="<?php echo $data['drugName']; ?>" required/>
+                                        <label class="input-label">Drug Name</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugDescription" value="<?php echo $data['drugDescription']; ?>" required/>
+                                        <label class="input-label">Drug Description</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" step="0.01" min="0" class="input-field" name="drugPrice" value="<?php echo $data['drugPrice']; ?>" required/>
+                                        <label class="input-label">Drug Price</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" class="input-field" name="drugQuantity" value="<?php echo $data['drugQuantity']; ?>" required/>
+                                        <label class="input-label">Drug Quantity</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugExpirationDate" value="<?php echo $data['drugExpirationDate']; ?>" required/>
+                                        <label class="input-label">Drug Expiration Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugManufacturingDate" value="<?php echo $data['drugManufacturingDate']; ?>" required/>
+                                        <label class="input-label">Drug Manufacturing Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
+                                        <label class="input-label">Drug Company</label>
+                                    </div>
+                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
+                                    <input type="hidden" name="type" value="updateDrug">
+                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
+                                    <div class="action">
+                                        <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
+                                        <input type="hidden" name="type" value="updateDrug">
+                                        <input type="submit" class="action-button" name="updateDrug" value="Update Drug">
+                                    </div>
+                                </form>                               
+                            </div>
+
+                        <!--REGISTER ADMINS-->
+
+                        <?php if($action == 'registerAdmins'): ?>
+                            <div class="card">
+                            <form class="card-form" method="post" action="../config/adminSignup.php">
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugName" value="<?php echo $data['drugName']; ?>" required/>
+                                        <label class="input-label">Drug Name</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugDescription" value="<?php echo $data['drugDescription']; ?>" required/>
+                                        <label class="input-label">Drug Description</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" step="0.01" min="0" class="input-field" name="drugPrice" value="<?php echo $data['drugPrice']; ?>" required/>
+                                        <label class="input-label">Drug Price</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="number" class="input-field" name="drugQuantity" value="<?php echo $data['drugQuantity']; ?>" required/>
+                                        <label class="input-label">Drug Quantity</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugExpirationDate" value="<?php echo $data['drugExpirationDate']; ?>" required/>
+                                        <label class="input-label">Drug Expiration Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="date" class="input-field" name="drugManufacturingDate" value="<?php echo $data['drugManufacturingDate']; ?>" required/>
+                                        <label class="input-label">Drug Manufacturing Date</label>
+                                    </div>
+                                    <div class="input">
+                                        <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
+                                        <label class="input-label">Drug Company</label>
+                                    </div>
+                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
+                                    <input type="hidden" name="type" value="updateDrug">
+                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
+                                    <div class="action">
+                                        <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
+                                        <input type="hidden" name="type" value="updateDrug">
+                                        <input type="submit" class="action-button" name="updateDrug" value="Update Drug">
+                                    </div>
+                                </form>                                
+                            </div>
+
                         <!-- UPDATE DRUGS -->
 
                         <?php 
