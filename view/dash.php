@@ -524,28 +524,29 @@
                                         <label class="input-label">Patient's Email</label>
                                     </div>
                                     <div class="input">
+                                        <input type="password" class="input-field" name="patientPassword" value="<?php echo $data['patientPassword']; ?>" required/>
+                                        <label class="input-label">Patient's Password</label>
+                                    </div>
+                                    <div class="input">
                                         <input type="number" class="input-field" name="patientPhoneNumber" value="<?php echo $data['patientPhoneNumber']; ?>" required/>
                                         <label class="input-label">Patient's Phone Number</label>
                                     </div>
                                     <div class="input">
-                                        <input type="date" class="input-field" name="drugExpirationDate" value="<?php echo $data['drugExpirationDate']; ?>" required/>
-                                        <label class="input-label">Drug Expiration Date</label>
+                                        <input type="text" class="input-field" name="patientAddress" value="<?php echo $data['patientAddress']; ?>" required/>
+                                        <label class="input-label">Patient's Address</label>
                                     </div>
                                     <div class="input">
-                                        <input type="date" class="input-field" name="drugManufacturingDate" value="<?php echo $data['drugManufacturingDate']; ?>" required/>
-                                        <label class="input-label">Drug Manufacturing Date</label>
+                                        <input type="text" class="input-field" name="patientGender" value="<?php echo $data['patientGender']; ?>" required/>
+                                        <label class="input-label">Patient's Gender</label>
                                     </div>
                                     <div class="input">
-                                        <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
-                                        <label class="input-label">Drug Company</label>
+                                        <input type="date" class="input-field" name="patientDOB" value="<?php echo $data['patientDOB']; ?>" required/>
+                                        <label class="input-label">Patient's DOB</label>
                                     </div>
-                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
-                                    <input type="hidden" name="type" value="updateDrug">
-                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
                                     <div class="action">
                                         <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
-                                        <input type="hidden" name="type" value="updateDrug">
-                                        <input type="submit" class="action-button" name="updateDrug" value="Update Drug">
+                                        <input type="hidden" name="type" value="patientSignup">
+                                        <input type="submit" class="action-button" name="patientSignup" value="Patient Signup">
                                     </div>
                                 </form>
                             </div>
