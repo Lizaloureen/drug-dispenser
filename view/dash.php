@@ -512,20 +512,20 @@
                             <div class="head">
                             <form class="card-form" method="post" action="../config/patientSignup.php">
                                     <div class="input">
-                                        <input type="text" class="input-field" name="drugName" value="<?php echo $data['drugName']; ?>" required/>
-                                        <label class="input-label">Drug Name</label>
+                                        <input type="text" class="input-field" name="patientFirstName" value="<?php echo $data['patientFirstName']; ?>" required/>
+                                        <label class="input-label">Patient's First Name</label>
                                     </div>
                                     <div class="input">
-                                        <input type="text" class="input-field" name="drugDescription" value="<?php echo $data['drugDescription']; ?>" required/>
-                                        <label class="input-label">Drug Description</label>
+                                        <input type="text" class="input-field" name="patientLastName" value="<?php echo $data['patientLastName']; ?>" required/>
+                                        <label class="input-label">Patient's Last Name</label>
                                     </div>
                                     <div class="input">
-                                        <input type="number" step="0.01" min="0" class="input-field" name="drugPrice" value="<?php echo $data['drugPrice']; ?>" required/>
-                                        <label class="input-label">Drug Price</label>
+                                        <input type="email" class="input-field" name="patientEmail" value="<?php echo $data['patientEmail']; ?>" required/>
+                                        <label class="input-label">Patient's Email</label>
                                     </div>
                                     <div class="input">
-                                        <input type="number" class="input-field" name="drugQuantity" value="<?php echo $data['drugQuantity']; ?>" required/>
-                                        <label class="input-label">Drug Quantity</label>
+                                        <input type="number" class="input-field" name="patientPhoneNumber" value="<?php echo $data['patientPhoneNumber']; ?>" required/>
+                                        <label class="input-label">Patient's Phone Number</label>
                                     </div>
                                     <div class="input">
                                         <input type="date" class="input-field" name="drugExpirationDate" value="<?php echo $data['drugExpirationDate']; ?>" required/>
@@ -583,9 +583,6 @@
                                         <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
                                         <label class="input-label">Drug Company</label>
                                     </div>
-                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
-                                    <input type="hidden" name="type" value="updateDrug">
-                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
                                     <div class="action">
                                         <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
                                         <input type="hidden" name="type" value="updateDrug">
@@ -627,9 +624,6 @@
                                         <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
                                         <label class="input-label">Drug Company</label>
                                     </div>
-                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
-                                    <input type="hidden" name="type" value="updateDrug">
-                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
                                     <div class="action">
                                         <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
                                         <input type="hidden" name="type" value="updateDrug">
@@ -671,9 +665,6 @@
                                         <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
                                         <label class="input-label">Drug Company</label>
                                     </div>
-                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
-                                    <input type="hidden" name="type" value="updateDrug">
-                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
                                     <div class="action">
                                         <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
                                         <input type="hidden" name="type" value="updateDrug">
@@ -715,9 +706,6 @@
                                         <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
                                         <label class="input-label">Drug Company</label>
                                     </div>
-                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
-                                    <input type="hidden" name="type" value="updateDrug">
-                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
                                     <div class="action">
                                         <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
                                         <input type="hidden" name="type" value="updateDrug">
@@ -763,9 +751,6 @@
                                         <input type="text" class="input-field" name="drugCompany" value="<?php echo $data['drugCompany']; ?>" required/>
                                         <label class="input-label">Drug Company</label>
                                     </div>
-                                    <!-- <input type="hidden" name="id" value="<?php echo $data['ID']; ?>">
-                                    <input type="hidden" name="type" value="updateDrug">
-                                    <input type="submit" class="btn" name="updateDrug" value="Update Drug"> -->
                                     <div class="action">
                                         <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
                                         <input type="hidden" name="type" value="updateDrug">
