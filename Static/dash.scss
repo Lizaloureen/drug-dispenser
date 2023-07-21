@@ -19,16 +19,16 @@ li {
 	--lato: 'Lato', sans-serif;
 
 	--light: #F9F9F9;
-	--blue: #666;
-	--light-blue: #CFE8FF;
-	--grey: #eee;
-	--dark-grey: #AAAAAA;
-	--dark: #666;
-	--red: #DB504A;
-	--yellow: #FFCE26;
-	--light-yellow: #FFF2C6;
+	--blue: #47dbcf;
+	--light-blue: #62f1c4;
+	--green: #c0e90d;
+	--purple: #8e0482;
+	--dark-brown: #b13e3e61;
+	--red: #e71a13;
+	--blue: #269dff;
+	--light-yellow: #e9f901;
 	--orange: #FD7238;
-	--light-orange: #FFE0D3;
+	--light-pink: #e38a8a;
 }
 
 html {
@@ -36,9 +36,9 @@ html {
 }
 
 body.dark {
-	--light: #666;
-	--grey: #666;
-	--dark: #FBFBFB;
+	--light: #adc0d3;
+	--grey: #36364d;
+	--dark: #3717ab;
 }
 
 body {
@@ -76,7 +76,7 @@ body {
 	height: 56px;
 	display: flex;
 	align-items: center;
-	color: var(--blue);
+	color: var(--coral);
 	position: sticky;
 	top: 0;
 	left: 0;
@@ -102,7 +102,7 @@ body {
 	padding: 4px;
 }
 #sidebar .side-menu li.active {
-	background: var(--grey);
+	background: var(--light-blue);
 	position: relative;
 }
 #sidebar .side-menu li.active::before {
@@ -113,7 +113,7 @@ body {
 	border-radius: 50%;
 	top: -40px;
 	right: 0;
-	box-shadow: 20px 20px 0 var(--grey);
+	box-shadow: 20px 20px 0 var(--dark-grey);
 	z-index: -1;
 }
 #sidebar .side-menu li.active::after {
@@ -140,14 +140,14 @@ body {
 	overflow-x: hidden;
 }
 #sidebar .side-menu.top li.active a {
-	color: var(--blue);
+	color: var(--light-blue);
 }
 #sidebar.hide .side-menu li a {
 	width: calc(48px - (4px * 2));
 	transition: width .3s ease;
 }
 #sidebar .side-menu li a.logout {
-	color: var(--red);
+	color: var(--orange);
 }
 #sidebar .side-menu.top li a:hover {
 	color: var(--blue);
@@ -214,7 +214,7 @@ body {
 	transition: .3s ease;
 }
 #content nav .nav-link:hover {
-	color: var(--blue);
+	color: var(--coral);
 }
 #content nav form {
 	max-width: 400px;
@@ -243,7 +243,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background: var(--blue);
+	background: var(--purple);
 	color: var(--light);
 	font-size: 18px;
 	border: none;
@@ -263,7 +263,7 @@ body {
 	height: 20px;
 	border-radius: 50%;
 	border: 2px solid var(--light);
-	background: var(--red);
+	background: var(--light-pink);
 	color: var(--light);
 	font-weight: 700;
 	font-size: 12px;
@@ -336,7 +336,7 @@ body {
 	color: var(--dark);
 }
 #content main .head-title .left .breadcrumb li a {
-	color: var(--dark-grey);
+	color: var(--dark-blue);
 	pointer-events: none;
 }
 #content main .head-title .left .breadcrumb li a.active {
@@ -383,15 +383,15 @@ body {
 	align-items: center;
 }
 #content main .box-info li:nth-child(1) .bx {
-	background: var(--light-blue);
+	background: var(--light-grey);
 	color: var(--blue);
 }
 #content main .box-info li:nth-child(2) .bx {
-	background: var(--light-yellow);
+	background: var(--light-purple);
 	color: var(--yellow);
 }
 #content main .box-info li:nth-child(3) .bx {
-	background: var(--light-orange);
+	background: var(--light-pink);
 	color: var(--orange);
 }
 #content main .box-info li .text h3 {
@@ -476,13 +476,13 @@ body {
 	font-weight: 700;
 }
 #content main .table-data .order table tr td .status.completed {
-	background: var(--blue);
+	background: var(--light-red);
 }
 #content main .table-data .order table tr td .status.process {
-	background: var(--yellow);
+	background: var(--light-orange);
 }
 #content main .table-data .order table tr td .status.pending {
-	background: var(--orange);
+	background: var(--dark-grey);
 }
 
 
@@ -496,7 +496,7 @@ body {
 #content main .table-data .todo .todo-list li {
 	width: 100%;
 	margin-bottom: 16px;
-	background: var(--grey);
+	background: var(--dark-blue);
 	border-radius: 10px;
 	padding: 14px 20px;
 	display: flex;
@@ -510,7 +510,7 @@ body {
 	border-left: 10px solid var(--blue);
 }
 #content main .table-data .todo .todo-list li.not-completed {
-	border-left: 10px solid var(--orange);
+	border-left: 10px solid var(--black);
 }
 #content main .table-data .todo .todo-list li:last-child {
 	margin-bottom: 0;
@@ -568,7 +568,7 @@ body {
 		height: 100%;
 		border-radius: 0 36px 36px 0;
 		color: var(--light);
-		background: var(--red);
+		background: var(--light-purple);
 	}
 
 	#content nav form.show ~ .notification,
