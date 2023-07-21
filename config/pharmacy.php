@@ -8,8 +8,7 @@ $database = new Database();
 
 // Dispense the drug based on the drug id posted here
 
-    $ID = $_POST['ID'];
-    change $ID = $_POST['ID']  to $ID = $_POST['drugID']
+    $ID = $_POST['drugID'];
     if($database->dispense($ID)){
         echo "<script>alert('Drug dispensed Successfully')</script>";
 

@@ -105,7 +105,7 @@
                   <option value="" class="input" disabled selected>Drug Name</option>
                   <?php
                     include_once '../database/database.php';
-                    $database = new database();
+                    $database = new Database();
                     $items = $database->getDrugs();
                     foreach ($items as $item):
                   ?>

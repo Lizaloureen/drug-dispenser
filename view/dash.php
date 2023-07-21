@@ -3,7 +3,7 @@
 
     include '../database/database.php';
 
-    $database = new database();
+    $database = new Database();
 
 
     if(isset($_GET['action'])){

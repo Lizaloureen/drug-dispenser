@@ -1,27 +1,25 @@
 <?php
 class Database {
-    private $hostname;
-    private $username;
-    private $password;
-    private $dbname;
+    private $host = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $dbname = "mymedicine";
+    private $connection;
 
-    public function __construct(){
-        $this->hostname = "localhost";
-        $this->username = "root";
-        $this->password = "";
-        $this->dbname = "my-medicine";
-
-        try{
-            $this->connection = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", $this->username, $this->password);
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e){
-            echo "Connection failed: " . $e->getMessage();
+    public function __construct() {
+        $this->connection = new mysqli($this->host, $this->username, $this->password, $this->dbname);
+        if ($this->connection->connect_error) {
+            die("Connection failed: " . $this->connection->connect_error);
         }
+    }
+
+    public function getConnection() {
+        return $this->connection;
     }
 }
 
     // Patient signup
-    public function patientSignup($patientFirstName, $patientLastName, $patientEmail, $patientPassword, $patientPhoneNumber, $patientAddress, $patientGender, $patientDOB) {
+    function patientSignup($patientFirstName, $patientLastName, $patientEmail, $patientPassword, $patientPhoneNumber, $patientAddress, $patientGender, $patientDOB) {
         global $database; // Make the $database variable accessible inside the function
         try {
             $stmt = $database->getConnection()->prepare("INSERT INTO patients (patientFirstName, patientLastName, patientEmail, patientPassword, patientPhoneNumber, patientAddress, patientGender, patientDOB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
@@ -34,32 +32,47 @@ class Database {
     }
 
     // Doctor signup
-    public function doctorSignup($doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB){
-        try {
-            $stmt = $this->connection->prepare("INSERT INTO doctors (doctorFirstName, doctorLastName, doctorEmail, doctorPassword, doctorPhoneNumber, doctorAddress, doctorGender, doctorDOB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB]);
-            return true; // Return true if the signup was successful
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            return false;
-        }        
-    }
+    class Database {
+        // ... (other code)
+    
+        // Doctor signup
+        function doctorSignup($doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB) {
+            try {
+                $stmt = $this->connection->prepare("INSERT INTO doctors (doctorFirstName, doctorLastName, doctorEmail, doctorPassword, doctorPhoneNumber, doctorAddress, doctorGender, doctorDOB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB]);
+                return true; // Return true if the signup was successful
+            } catch(PDOException $e) {
+                echo "Error: " . $e->getMessage();
+                return false;
+            }        
+        }
 
     // Pharmacy signup
-    public pharmacySignup($pharmacyName, $pharmacyEmail, $pharmacyPassword, $pharmacyPhoneNumber, $pharmacyAddress){
-        try {
-            $stmt = $this->connection->prepare("INSERT INTO pharmacy (pharmacyName, pharmacyEmail, pharmacyPassword, pharmacyPhoneNumber, pharmacyAddress) VALUES (?, ?, ?, ?, ?)");
-            $stmt->execute([$pharmacyName, $pharmacyEmail, $pharmacyPassword, $pharmacyPhoneNumber, $pharmacyAddress]);
-            return true; // Return true if the signup was successful
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            return false;
-        }        
+        public function adminExists($adminID, $adminPassword){
+            //Prepare statement
+            $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
+            $stmt->bindParam(':ID', $adminID);
+    
+            //Execute statement
+            $stmt->execute();
+    
+            //Fetch the result
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+            //Check if the password matches
+            if($result && $result['adminPassword'] === $adminPassword){
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
+    
+    
 
     //Login using ID and password for patients
     // Checking whether a patient exists and confirming their password
-    public function patientLogin($ID, $patientPassword){
+    function patientLogin($ID, $patientPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT patientPassword FROM patients WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -79,7 +92,7 @@ class Database {
     }
 
     //Login using ID and password for patients
-    public function adminLogin($ID, $password)
+    function adminLogin($ID, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
@@ -100,7 +113,7 @@ class Database {
     }
 
     // Login using ID and password for doctors
-    public function doctorLogin($ID, $password)
+    function doctorLogin($ID, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT doctorPassword FROM doctors WHERE ID = :ID");
@@ -121,7 +134,7 @@ class Database {
     }
 
     //Login using ID and password for pharmaceutical companies
-    public function pharmaceuticalcompanyLogin($ID, $password)
+    function pharmaceuticalcompanyLogin($ID, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT companyPassword FROM companies WHERE ID = :ID");
@@ -142,7 +155,7 @@ class Database {
     }
 
     //Login using ID and password for pharmacies
-    public function pharmacyLogin($ID, $password)
+    function pharmacyLogin($ID, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
@@ -163,7 +176,7 @@ class Database {
     }
 
     //Login using ID and password for staff
-    public function staffLogin($staffno, $password)
+    function staffLogin($staffno, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT staffPassword FROM staff WHERE ID = :ID");
@@ -185,11 +198,10 @@ class Database {
 
 
 
-
     // These are the added functions for the project
 
     // get total number of enities in a table
-    public function getTotalUsersByEntity($entity){
+    function getTotalUsersByEntity($entity){
         try {
             $stmt = $this->connection->prepare("SELECT COUNT(*) FROM $entity ");
             $stmt->execute();
@@ -202,7 +214,7 @@ class Database {
     }
 
     // get all drugs
-    public function getAllDrugs($start_index, $results_per_page){
+    function getAllDrugs($start_index, $results_per_page){
         try {
             $stmt = $this->connection->prepare("SELECT * FROM drugs LIMIT $start_index, $results_per_page");
             $stmt->execute();
@@ -215,7 +227,7 @@ class Database {
     }
 
     // Dispense drug
-    public function dispense($drugID){
+    function dispense($drugID){
         // Prepare statement
         $stmt = $this->connection->prepare("UPDATE drugs SET drugQuantity = drugQuantity - 1 WHERE ID = :ID");
         $stmt->bindParam(':ID', $drugID);
@@ -252,7 +264,7 @@ class Database {
         return true;
     }
 
-    public function getPatientByID($ID){
+    function getPatientByID($ID){
         $stmt = $this->connection->prepare("SELECT * FROM patients WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
     
@@ -264,7 +276,7 @@ class Database {
         return $result;
     }
 
-    public function addPrescription($patientID, $doctorID, $prescriptionDate, $prescriptionDuration, $prescriptionNotes){
+    function addPrescription($patientID, $doctorID, $prescriptionDate, $prescriptionDuration, $prescriptionNotes){
         //Prepare statement
         $stmt = $this->connection->prepare("INSERT INTO prescriptions (patientID, doctorID, prescriptionDate, prescriptionDuration, prescriptionNotes) VALUES (:patientID, :doctorID, :prescriptionDate, :prescriptionDuration, :prescriptionNotes)");
         $stmt->bindParam(':patientID', $patientID);
@@ -284,7 +296,7 @@ class Database {
         }
     }
 
-    public function getUsersByEntityAndIDForDoctor($entity, $doctorID, $start_index, $results_per_page){
+    function getUsersByEntityAndIDForDoctor($entity, $doctorID, $start_index, $results_per_page){
         // Prepare statement
         $stmt = $this->connection->prepare("SELECT * FROM prescriptions WHERE doctorID = :doctorID LIMIT :start_index, :results_per_page");
         $stmt->bindParam(':doctorID', $doctorID);
@@ -299,7 +311,7 @@ class Database {
         return $result;
     }
 
-    public function getUsersByEntityAndIDForPatient($entity, $ID, $start_index, $results_per_page){
+    function getUsersByEntityAndIDForPatient($entity, $ID, $start_index, $results_per_page){
         // Prepare statement
         $stmt = $this->connection->prepare("SELECT * FROM prescriptions WHERE patientID = :ID LIMIT :start_index, :results_per_page");
         $stmt->bindParam(':ID', $ID);
@@ -315,7 +327,7 @@ class Database {
     }
 
     // delete drugs from the database
-    public function deleteDrug($ID){
+    function deleteDrug($ID){
         // Prepare statement
         $stmt = $this->connection->prepare("DELETE FROM drugs WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -332,7 +344,7 @@ class Database {
     }
 
     // update drugs in the database
-    public function updateDrug($ID, $drugName, $drugDescription, $drugPrice, $drugQuantity, $drugExpirationDate, $drugManufacturingDate, $drugCompany){
+    function updateDrug($ID, $drugName, $drugDescription, $drugPrice, $drugQuantity, $drugExpirationDate, $drugManufacturingDate, $drugCompany){
         // Prepare statement
         $stmt = $this->connection->prepare("UPDATE drugs SET drugName = :drugName, drugDescription = :drugDescription, drugPrice = :drugPrice, drugQuantity = :drugQuantity, drugExpirationDate = :drugExpirationDate, drugManufacturingDate = :drugManufacturingDate, drugCompany = :drugCompany WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -369,7 +381,7 @@ class Database {
     }
 
     // get drugs row based in the ID
-    public function getDrug($ID){
+    function getDrug($ID){
         // Prepare statement
         $stmt = $this->connection->prepare("SELECT * FROM drugs WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -382,9 +394,8 @@ class Database {
         return $result;
     }
 
-
     //Adding meds to the database (Pharmaceuticals)
-    public function addMeds($drugName, $drugDescription, $drugPrice, $drugQuantity, $drugExpirationDate, $drugManufacturingDate, $drugCompany){
+    function addMeds($drugName, $drugDescription, $drugPrice, $drugQuantity, $drugExpirationDate, $drugManufacturingDate, $drugCompany){
         //Prepare statement
         $stmt = $this->connection->prepare("INSERT INTO drugs (drugName, drugDescription, drugPrice, drugQuantity, drugExpirationDate, drugManufacturingDate, drugCompany) VALUES (:drugName, :drugDescription, :drugPrice, :drugQuantity, :drugExpirationDate, :drugManufacturingDate, :drugCompany)");
         $stmt->bindParam(':drugName', $drugName);
@@ -400,7 +411,7 @@ class Database {
     }
 
     // get drugs
-    public function getDrugs(){
+    function getDrugs(){
         // Prepare statement
         $stmt = $this->connection->prepare("SELECT * FROM drugs");
     
@@ -413,7 +424,7 @@ class Database {
     }
 
     // delete patient from the database
-    public function deletePatient($ID){
+    function deletePatient($ID){
         // Prepare statement
         $stmt = $this->connection->prepare("DELETE FROM patients WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -430,7 +441,7 @@ class Database {
     }
 
     // update patients in the database
-    public function updatePatient($ID, $patientFirstName, $patientLastName, $patientEmail, $patientPassword, $patientPhoneNumber, $patientAddress, $patientGender, $patientDOB){
+    function updatePatient($ID, $patientFirstName, $patientLastName, $patientEmail, $patientPassword, $patientPhoneNumber, $patientAddress, $patientGender, $patientDOB){
         // Prepare statement
         $stmt = $this->connection->prepare("UPDATE patients SET patientFirstName = :patientFirstName, patientLastName = :patientLastName, patientEmail = :patientEmail, patientPassword = :patientPassword, patientPhoneNumber = :patientPhoneNumber, patientAddress = :patientAddress, patientGender = :patientGender, patientDOB = :patientDOB WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -455,7 +466,7 @@ class Database {
     }
 
     // delete doctor from the database
-    public function deleteDoctor($ID){
+    function deleteDoctor($ID){
         // Prepare statement
         $stmt = $this->connection->prepare("DELETE FROM doctors WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -472,7 +483,7 @@ class Database {
     }
 
     // update doctor in the database
-    public function updateDoctor($ID, $doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB){
+    function updateDoctor($ID, $doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB){
         // Prepare statement
         $stmt = $this->connection->prepare("UPDATE doctors SET doctorFirstName = :doctorFirstName, doctorLastName = :doctorLastName, doctorEmail = :doctorEmail, doctorPassword = :doctorPassword, doctorPhoneNumber = :doctorPhoneNumber, doctorAddress = :doctorAddress, doctorGender = :doctorGender, doctorDOB = :doctorDOB WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -496,7 +507,7 @@ class Database {
         }
     }
 // Checking whether a patient exists and confirming their password
-public function patientExists($patientID, $patientPassword){
+function patientExists($patientID, $patientPassword){
     //Prepare statement
     $stmt = $this->connection->prepare("SELECT patientPassword FROM patients WHERE ID = :patientID");
     $stmt->bindParam(':patientID', $patientID);
@@ -534,7 +545,7 @@ public function patientExists($patientID, $patientPassword){
         }
     }
  // checking whether an admin exists and confirming their password
-    public function adminExists($adminID, $adminPassword){
+    function adminExists($adminID, $adminPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
         $stmt->bindParam(':ID', $adminID);
@@ -552,7 +563,7 @@ public function patientExists($patientID, $patientPassword){
             return false;
         }
          // Confirming whether a pharmacy exists and confirming their password
-    public function pharmacyExists($ID, $pharmacyPassword){
+    function pharmacyExists($ID, $pharmacyPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -571,7 +582,7 @@ public function patientExists($patientID, $patientPassword){
         }
     }
  // check if username and password of company match
-    public function companyExists($ID, $companyPassword){
+    function companyExists($ID, $companyPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT * FROM companies WHERE ID = :ID AND companyPassword = :companyPassword");
         $stmt->bindParam(':ID', $ID);
@@ -594,7 +605,7 @@ public function patientExists($patientID, $patientPassword){
 
 
 // Confirming whether a pharmacy exists and confirming their password
-public function pharmacyExists($ID, $pharmacyPassword){
+function pharmacyExists($ID, $pharmacyPassword){
     //Prepare statement
     $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
     $stmt->bindParam(':ID', $ID);
