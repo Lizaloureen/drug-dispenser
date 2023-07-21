@@ -544,7 +544,6 @@
                                         <label class="input-label">Patient's DOB</label>
                                     </div>
                                     <div class="action">
-                                        <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
                                         <input type="hidden" name="type" value="patientSignup">
                                         <input type="submit" class="action-button" name="patientSignup" value="Patient Signup">
                                     </div>
@@ -637,7 +636,6 @@
                                     <label class="input-label">Supervisor's DOB</label>
                                 </div>
                                 <div class="action">
-                                    <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
                                     <input type="hidden" name="type" value="supervisorSignup">
                                     <input type="submit" class="action-button" name="supervisorSignup" value="Supervisor Signup">
                                 </div>
@@ -672,7 +670,6 @@
                                     <label class="input-label">Pharmacy's Address</label>
                                 </div>
                                 <div class="action">
-                                    <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
                                     <input type="hidden" name="type" value="pharmacySignup">
                                     <input type="submit" class="action-button" name="pharmacySignup" value="Pharmacy Signup">
                                 </div>     
@@ -719,7 +716,6 @@
                                     <label class="input-label">Admin's DOB</label>
                                 </div>
                                 <div class="action">
-                                    <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
                                     <input type="hidden" name="type" value="adminSignup">
                                     <input type="submit" class="action-button" name="adminSignup" value="Admin Signup">
                                 </div>
