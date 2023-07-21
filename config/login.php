@@ -101,7 +101,7 @@ if ($entity === "companies") {
     // Check if the fields are empty
     if (!empty($username) && !empty($password) && !empty($entity)) {
         // Check if the user exists and if they do, redirect them to views/admin.view.php
-        if ($database->CompanyExists($username, $password)) {
+        if ($database->companyExists($username, $password)) {
             // get id of pharmaceutical company and store in session and display it as a js alert
             echo "<script>alert('Login Successful')</script>";
 
