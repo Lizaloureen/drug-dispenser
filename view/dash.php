@@ -273,7 +273,7 @@
             <div class="action">
                 <input type="hidden" name="type" value="patientSignup">
                 <input type="submit" class="action-button" name="patientSignup" value="Patient Signup">
-            </div>
+            </div> 
         </form>
     </div>
 <?php endif ?>
@@ -281,171 +281,175 @@
                         
             <!--REGISTER DOCTORS-->
 
-            <?php if($action == 'registerDoctors'): ?>
-                <div class="card">
-                    <form class="card-form" method="post" action="../view/doctorSignup.php">
-                        <div class="input">
-                            <input type="text" class="input-field" name="doctorFirstName" value="" required/>
-                            <label class="input-label">Doctor's First Name</label>
-                        </div>
-                        <div class="input">
-                            <input type="text" class="input-field" name="doctorLastName" value="" required/>
-                            <label class="input-label">Doctor's Last Name</label>
-                        </div>
-                        <div class="input">
-                            <input type="email" class="input-field" name="doctorEmail" value="" required/>                                        
-                            <label class="input-label">Doctor's Email</label>
-                        </div>
-                        <div class="input">
-                            <input type="password" class="input-field" name="doctorPassword" value="" required/>
-                            <label class="input-label">Doctor's Password</label>
-                        </div>
-                        <div class="input">
-                            <input type="number" class="input-field" name="doctorPhoneNumber" value="" required/>
-                            <label class="input-label">Doctor's Phone Number</label>
-                        </div>                                    
-                        <div class="input">
-                            <input type="text" class="input-field" name="doctorAddress" value="" required/>
-                            <label class="input-label">Doctor's Address</label>
-                        </div>
-                        <div class="input">
-                            <input type="text" class="input-field" name="doctorGender" value="" required/>
-                            <label class="input-label">Doctor's Gender</label>
-                        </div>
-                        <div class="input">
-                            <input type="date" class="input-field" name="doctorDOB" value="" required/>
-                            <label class="input-label">Doctor's DOB</label>
-                        </div>
-                        <div class="action">
-                            <input type="hidden" name="type" value="doctorSignup">
-                            <input type="submit" class="action-button" name="doctorSignup" value="Doctor Signup">
-                        </div>
-                    </form>
-                </div>
-                <?php endif ?>
+            <?php if ($action == 'registerDoctors'): ?>
+    <div class="card">
+        <form class="card-form" method="post" action="../view/doctorSignup.php">
+            <div class="input">
+                <input type="text" class="input-field" name="doctorFirstName" value="<?php echo isset($data['doctorFirstName']) ? $data['doctorFirstName'] : ''; ?>" required/>
+                <label class="input-label">Doctor's First Name</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="doctorLastName" value="<?php echo isset($data['doctorLastName']) ? $data['doctorLastName'] : ''; ?>" required/>
+                <label class="input-label">Doctor's Last Name</label>
+            </div>
+            <div class="input">
+                <input type="email" class="input-field" name="doctorEmail" value="<?php echo isset($data['doctorEmail']) ? $data['doctorEmail'] : ''; ?>" required/>                                        
+                <label class="input-label">Doctor's Email</label>
+            </div>
+            <div class="input">
+                <input type="password" class="input-field" name="doctorPassword" value="<?php echo isset($data['doctorPassword']) ? $data['doctorPassword'] : ''; ?>" required/>
+                <label class="input-label">Doctor's Password</label>
+            </div>
+            <div class="input">
+                <input type="number" class="input-field" name="doctorPhoneNumber" value="<?php echo isset($data['doctorPhoneNumber']) ? $data['doctorPhoneNumber'] : ''; ?>" required/>
+                <label class="input-label">Doctor's Phone Number</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="doctorAddress" value="<?php echo isset($data['doctorAddress']) ? $data['doctorAddress'] : ''; ?>" required/>
+                <label class="input-label">Doctor's Address</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="doctorGender" value="<?php echo isset($data['doctorGender']) ? $data['doctorGender'] : ''; ?>" required/>
+                <label class="input-label">Doctor's Gender</label>
+            </div>
+            <div class="input">
+                <input type="date" class="input-field" name="doctorDOB" value="<?php echo isset($data['doctorDOB']) ? $data['doctorDOB'] : ''; ?>" required/>
+                <label class="input-label">Doctor's DOB</label>
+            </div>
+            <div class="action">
+                <input type="hidden" name="type" value="doctorSignup">
+                <input type="submit" class="action-button" name="doctorSignup" value="Doctor Signup">
+            </div>
+        </form>
+    </div>
+<?php endif ?>
+
 
                 <!--REGISTER SUPERVISORS-->
 
-                <?php if($action == 'registerSupervisors'): ?>
-                    <div class="card">
-                    <form class="card-form" method="post" action="../view/supervisorSignup.php">
-                        <div class="input">
-                            <input type="text" class="input-field" name="supervisorFirstName" value="<?php echo $data['supervisorFirstName']; ?>" required/>
-                            <label class="input-label">Supervisor's First Name</label>
-                        </div>
-                        <div class="input">
-                            <input type="text" class="input-field" name="supervisorLastName" value="<?php echo $data['supervisorLastName']; ?>" required/>
-                            <label class="input-label">Supervisor's Last Name</label>
-                        </div>
-                        <div class="input">
-                            <input type="email" class="input-field" name="supervisorEmail" value="<?php echo $data['supervisorEmail']; ?>" required/>                                        
-                            <label class="input-label">Supervisor's Email</label>
-                        </div>
-                        <div class="input">
-                            <input type="password" class="input-field" name="supervisorPassword" value="<?php echo $data['supervisorPassword']; ?>" required/>
-                            <label class="input-label">Supervisor's Password</label>
-                        </div>
-                        <div class="input">
-                            <input type="number" class="input-field" name="supervisorPhoneNumber" value="<?php echo $data['supervisorPhoneNumber']; ?>" required/>
-                            <label class="input-label">Supervisor's Phone Number</label>
-                        </div>                                    
-                        <div class="input">
-                            <input type="text" class="input-field" name="supervisorAddress" value="<?php echo $data['supervisorAddress']; ?>" required/>
-                            <label class="input-label">Supervisor's Address</label>
-                        </div>
-                        <div class="input">
-                            <input type="text" class="input-field" name="supervisorGender" value="<?php echo $data['supervisorGender']; ?>" required/>
-                            <label class="input-label">Supervisor's Gender</label>
-                        </div>
-                        <div class="input">
-                            <input type="date" class="input-field" name="supervisorDOB" value="<?php echo $data['supervisorDOB']; ?>" required/>
-                            <label class="input-label">Supervisor's DOB</label>
-                        </div>
-                        <div class="action">
-                            <input type="hidden" name="type" value="supervisorSignup">
-                            <input type="submit" class="action-button" name="supervisorSignup" value="Supervisor Signup">
-                        </div>
-                    </form> 
-                </div>
-                <?php endif ?>
+                <?php if ($action == 'registerSupervisors'): ?>
+    <div class="card">
+        <form class="card-form" method="post" action="../view/supervisorSignup.php">
+            <div class="input">
+                <input type="text" class="input-field" name="supervisorFirstName" value="<?php echo isset($data['supervisorFirstName']) ? $data['supervisorFirstName'] : ''; ?>" required/>
+                <label class="input-label">Supervisor's First Name</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="supervisorLastName" value="<?php echo isset($data['supervisorLastName']) ? $data['supervisorLastName'] : ''; ?>" required/>
+                <label class="input-label">Supervisor's Last Name</label>
+            </div>
+            <div class="input">
+                <input type="email" class="input-field" name="supervisorEmail" value="<?php echo isset($data['supervisorEmail']) ? $data['supervisorEmail'] : ''; ?>" required/>                                        
+                <label class="input-label">Supervisor's Email</label>
+            </div>
+            <div class="input">
+                <input type="password" class="input-field" name="supervisorPassword" value="<?php echo isset($data['supervisorPassword']) ? $data['supervisorPassword'] : ''; ?>" required/>
+                <label class="input-label">Supervisor's Password</label>
+            </div>
+            <div class="input">
+                <input type="number" class="input-field" name="supervisorPhoneNumber" value="<?php echo isset($data['supervisorPhoneNumber']) ? $data['supervisorPhoneNumber'] : ''; ?>" required/>
+                <label class="input-label">Supervisor's Phone Number</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="supervisorAddress" value="<?php echo isset($data['supervisorAddress']) ? $data['supervisorAddress'] : ''; ?>" required/>
+                <label class="input-label">Supervisor's Address</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="supervisorGender" value="<?php echo isset($data['supervisorGender']) ? $data['supervisorGender'] : ''; ?>" required/>
+                <label class="input-label">Supervisor's Gender</label>
+            </div>
+            <div class="input">
+                <input type="date" class="input-field" name="supervisorDOB" value="<?php echo isset($data['supervisorDOB']) ? $data['supervisorDOB'] : ''; ?>" required/>
+                <label class="input-label">Supervisor's DOB</label>
+            </div>
+            <div class="action">
+                <input type="hidden" name="type" value="supervisorSignup">
+                <input type="submit" class="action-button" name="supervisorSignup" value="Supervisor Signup">
+            </div>
+        </form> 
+    </div>
+<?php endif ?>
+
 
                 <!--REGISTER PHARMACISTS-->
 
-                <?php if($action == 'registerPharmacists'): ?>
-                    <div class="card">
-                        <form class="card-form" method="post" action="../view/pharmacySignup.php">
-                            <div class="input">
-                                <input type="text" class="input-field" name="pharmacyName" value="<?php echo $data['pharmacyName']; ?>" required/>
-                                <label class="input-label">Pharmacy's Name</label>
-                            </div>
-                            <div class="input">
-                                <input type="email" class="input-field" name="pharmacyEmail" value="<?php echo $data['pharmacyEmail']; ?>" required/>                                        
-                                <label class="input-label">Pharmacy's Email</label>
-                            </div>
-                            <div class="input">
-                                <input type="password" class="input-field" name="pharmacyPassword" value="<?php echo $data['pharmacyPassword']; ?>" required/>
-                                <label class="input-label">Pharmacy's Password</label>
-                            </div>
-                            <div class="input">
-                                <input type="number" class="input-field" name="pharmacyPhoneNumber" value="<?php echo $data['pharmacyPhoneNumber']; ?>" required/>
-                                <label class="input-label">Pharmacy's Phone Number</label>
-                            </div>                                    
-                            <div class="input">
-                                <input type="text" class="input-field" name="pharmacyAddress" value="<?php echo $data['pharmacyAddress']; ?>" required/>
-                                <label class="input-label">Pharmacy's Address</label>
-                            </div>
-                            <div class="action">
-                                <input type="hidden" name="type" value="pharmacySignup">
-                                <input type="submit" class="action-button" name="pharmacySignup" value="Pharmacy Signup">
-                            </div>     
-                        </form>                              
-                    </div>
-                    <?php endif ?>
+                <?php if ($action == 'registerPharmacists'): ?>
+    <div class="card">
+        <form class="card-form" method="post" action="../view/pharmacySignup.php">
+            <div class="input">
+                <input type="text" class="input-field" name="pharmacyName" value="<?php echo isset($data['pharmacyName']) ? $data['pharmacyName'] : ''; ?>" required/>
+                <label class="input-label">Pharmacy's Name</label>
+            </div>
+            <div class="input">
+                <input type="email" class="input-field" name="pharmacyEmail" value="<?php echo isset($data['pharmacyEmail']) ? $data['pharmacyEmail'] : ''; ?>" required/>                                        
+                <label class="input-label">Pharmacy's Email</label>
+            </div>
+            <div class="input">
+                <input type="password" class="input-field" name="pharmacyPassword" value="<?php echo isset($data['pharmacyPassword']) ? $data['pharmacyPassword'] : ''; ?>" required/>
+                <label class="input-label">Pharmacy's Password</label>
+            </div>
+            <div class="input">
+                <input type="number" class="input-field" name="pharmacyPhoneNumber" value="<?php echo isset($data['pharmacyPhoneNumber']) ? $data['pharmacyPhoneNumber'] : ''; ?>" required/>
+                <label class="input-label">Pharmacy's Phone Number</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="pharmacyAddress" value="<?php echo isset($data['pharmacyAddress']) ? $data['pharmacyAddress'] : ''; ?>" required/>
+                <label class="input-label">Pharmacy's Address</label>
+            </div>
+            <div class="action">
+                <input type="hidden" name="type" value="pharmacySignup">
+                <input type="submit" class="action-button" name="pharmacySignup" value="Pharmacy Signup">
+            </div>     
+        </form>                              
+    </div>
+<?php endif ?>
+
 
                     <!--REGISTER ADMINS-->
 
-                    <?php if($action == 'registerAdmins'): ?>
-                        <div class="card">
-                        <form class="card-form" method="post" action="../view/adminSignup.php">
-                        <div class="input">
-                            <input type="text" class="input-field" name="adminFirstName" value="<?php echo $data['adminFirstName']; ?>" required/>
-                            <label class="input-label">Admin's First Name</label>
-                        </div>
-                        <div class="input">
-                            <input type="text" class="input-field" name="adminLastName" value="<?php echo $data['adminLastName']; ?>" required/>
-                            <label class="input-label">Admin's Last Name</label>
-                        </div>
-                        <div class="input">
-                            <input type="email" class="input-field" name="adminEmail" value="<?php echo $data['adminEmail']; ?>" required/>                                        
-                            <label class="input-label">Admin's Email</label>
-                        </div>
-                        <div class="input">
-                            <input type="password" class="input-field" name="adminPassword" value="<?php echo $data['adminPassword']; ?>" required/>
-                            <label class="input-label">Admin's Password</label>
-                        </div>
-                        <div class="input">
-                            <input type="number" class="input-field" name="adminPhoneNumber" value="<?php echo $data['adminPhoneNumber']; ?>" required/>
-                            <label class="input-label">Admin's Phone Number</label>
-                        </div>                                    
-                        <div class="input">
-                            <input type="text" class="input-field" name="adminAddress" value="<?php echo $data['adminAddress']; ?>" required/>
-                            <label class="input-label">Admin's Address</label>
-                        </div>
-                        <div class="input">
-                            <input type="text" class="input-field" name="adminGender" value="<?php echo $data['adminGender']; ?>" required/>
-                            <label class="input-label">Admin's Gender</label>
-                        </div>
-                        <div class="input">
-                            <input type="date" class="input-field" name="adminDOB" value="<?php echo $data['adminDOB']; ?>" required/>
-                            <label class="input-label">Admin's DOB</label>
-                        </div>
-                        <div class="action">
-                            <input type="hidden" name="type" value="adminSignup">
-                            <input type="submit" class="action-button" name="adminSignup" value="Admin Signup">
-                        </div>
-                        </form>                                
-                        </div>
-                    <?php endif ?>
+                    <?php if ($action == 'registerAdmins'): ?>
+    <div class="card">
+        <form class="card-form" method="post" action="../view/adminSignup.php">
+            <div class="input">
+                <input type="text" class="input-field" name="adminFirstName" value="<?php echo isset($data['adminFirstName']) ? $data['adminFirstName'] : ''; ?>" required/>
+                <label class="input-label">Admin's First Name</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="adminLastName" value="<?php echo isset($data['adminLastName']) ? $data['adminLastName'] : ''; ?>" required/>
+                <label class="input-label">Admin's Last Name</label>
+            </div>
+            <div class="input">
+                <input type="email" class="input-field" name="adminEmail" value="<?php echo isset($data['adminEmail']) ? $data['adminEmail'] : ''; ?>" required/>                                        
+                <label class="input-label">Admin's Email</label>
+            </div>
+            <div class="input">
+                <input type="password" class="input-field" name="adminPassword" value="<?php echo isset($data['adminPassword']) ? $data['adminPassword'] : ''; ?>" required/>
+                <label class="input-label">Admin's Password</label>
+            </div>
+            <div class="input">
+                <input type="number" class="input-field" name="adminPhoneNumber" value="<?php echo isset($data['adminPhoneNumber']) ? $data['adminPhoneNumber'] : ''; ?>" required/>
+                <label class="input-label">Admin's Phone Number</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="adminAddress" value="<?php echo isset($data['adminAddress']) ? $data['adminAddress'] : ''; ?>" required/>
+                <label class="input-label">Admin's Address</label>
+            </div>
+            <div class="input">
+                <input type="text" class="input-field" name="adminGender" value="<?php echo isset($data['adminGender']) ? $data['adminGender'] : ''; ?>" required/>
+                <label class="input-label">Admin's Gender</label>
+            </div>
+            <div class="input">
+                <input type="date" class="input-field" name="adminDOB" value="<?php echo isset($data['adminDOB']) ? $data['adminDOB'] : ''; ?>" required/>
+                <label class="input-label">Admin's DOB</label>
+            </div>
+            <div class="action">
+                <input type="hidden" name="type" value="adminSignup">
+                <input type="submit" class="action-button" name="adminSignup" value="Admin Signup">
+            </div>
+        </form>                                
+    </div>
+<?php endif ?>
+
 
             <div class="table-data">
                 <div class="order">
