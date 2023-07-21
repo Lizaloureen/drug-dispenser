@@ -213,21 +213,41 @@ class Database {
     }
 
     // Dispense drug
-    function dispense($ID, $drugID, $drugName, $drugQuantity, $patientID, $doctorID){
+    function dispense($drugID){
+        // Prepare statement
         $stmt = $this->connection->prepare("UPDATE drugs SET drugQuantity = drugQuantity - 1 WHERE ID = :ID");
-        $stmt1 = $this->connection->prepare("INSERT INTO dispensed (drugID, drugName, drugQuantity, patientID, doctorID) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bindParam(':ID', $ID);
-        $stmt1 ->execute([$drugID, $drugName, $drugQuantity, $patientID, $doctorID]);
-
+        $stmt->bindParam(':ID', $drugID);
+    
         // Execute statement
         $stmt->execute();
-
-        // If it works return true
-        if($stmt){
-            return true;
-        } else {
+    
+        // Check if the quantity was reduced successfully
+        if ($stmt->rowCount() == 0) {
+            // The drug quantity was not reduced, so return false
             return false;
         }
+    
+        // Fetch the patientID and doctorID from prescriptions table
+        $stmt = $this->connection->prepare("SELECT patientID, doctorID FROM prescriptions WHERE drugID = :drugID");
+        $stmt->bindParam(':drugID', $drugID);
+    
+        // Execute statement
+        $stmt->execute();
+    
+        // Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        // Insert into dispensed table
+        $stmt = $this->connection->prepare("INSERT INTO dispensed (patientID, doctorID, drugID) VALUES (:patientID, :doctorID, :drugID)");
+        $stmt->bindParam(':patientID', $result['patientID'], PDO::PARAM_INT);
+        $stmt->bindParam(':doctorID', $result['doctorID'], PDO::PARAM_INT);
+        $stmt->bindParam(':drugID', $drugID);
+    
+        // Execute statement
+        $stmt->execute();
+    
+        // Return true
+        return true;
     }
 
     function getPatientByID($ID){
@@ -569,4 +589,27 @@ function patientExists($patientID, $patientPassword){
         }
     }
 }
+<<<<<<< HEAD
 ?>
+=======
+// Confirming whether a pharmacy exists and confirming their password
+function pharmacyExists($ID, $pharmacyPassword){
+    //Prepare statement
+    $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
+    $stmt->bindParam(':ID', $ID);
+
+    //Execute statement
+    $stmt->execute();
+
+    //Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //Check if the password matches
+    if($result['pharmacyPassword'] === $pharmacyPassword){
+        return true;
+    } else {
+        return false;
+    }
+}
+} ?>
+>>>>>>> 76938fce2d032c699cc44b022308f8a1ca7feb51
