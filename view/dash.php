@@ -559,39 +559,39 @@
                             <div class="card">
                             <form class="card-form" method="post" action="../config/doctorSignup.php">
                                 <div class="input">
-                                    <input type="text" class="input-field" name="doctorFirstName" value="<?php echo $data['doctorFirstName']; ?>" required/>
+                                    <input type="text" class="input-field" name="doctorFirstName" value="" required/>
                                     <label class="input-label">Doctor's First Name</label>
                                 </div>
                                 <div class="input">
-                                    <input type="text" class="input-field" name="doctorLastName" value="<?php echo $data['doctorLastName']; ?>" required/>
+                                    <input type="text" class="input-field" name="doctorLastName" value="" required/>
                                     <label class="input-label">Doctor's Last Name</label>
                                 </div>
                                 <div class="input">
-                                    <input type="email" class="input-field" name="doctorEmail" value="<?php echo $data['doctorEmail']; ?>" required/>                                        
+                                    <input type="email" class="input-field" name="doctorEmail" value="" required/>                                        
                                     <label class="input-label">Doctor's Email</label>
                                 </div>
                                 <div class="input">
-                                    <input type="password" class="input-field" name="doctorPassword" value="<?php echo $data['doctorPassword']; ?>" required/>
+                                    <input type="password" class="input-field" name="doctorPassword" value="" required/>
                                     <label class="input-label">Doctor's Password</label>
                                 </div>
                                 <div class="input">
-                                    <input type="number" class="input-field" name="doctorPhoneNumber" value="<?php echo $data['doctorPhoneNumber']; ?>" required/>
+                                    <input type="number" class="input-field" name="doctorPhoneNumber" value="" required/>
                                     <label class="input-label">Doctor's Phone Number</label>
                                 </div>                                    
                                 <div class="input">
-                                    <input type="text" class="input-field" name="doctorAddress" value="<?php echo $data['doctorAddress']; ?>" required/>
+                                    <input type="text" class="input-field" name="doctorAddress" value="" required/>
                                     <label class="input-label">Doctor's Address</label>
                                 </div>
                                 <div class="input">
-                                    <input type="text" class="input-field" name="doctorGender" value="<?php echo $data['doctorGender']; ?>" required/>
+                                    <input type="text" class="input-field" name="doctorGender" value="" required/>
                                     <label class="input-label">Doctor's Gender</label>
                                 </div>
                                 <div class="input">
-                                    <input type="date" class="input-field" name="doctorDOB" value="<?php echo $data['doctorDOB']; ?>" required/>
+                                    <input type="date" class="input-field" name="doctorDOB" value="" required/>
                                     <label class="input-label">Doctor's DOB</label>
                                 </div>
                                 <div class="action">
-                                    <input type="hidden" name="ID" value="<?php echo $data['ID']; ?>">
+                                    
                                     <input type="hidden" name="type" value="doctorSignup">
                                     <input type="submit" class="action-button" name="doctorSignup" value="Doctor Signup">
                                 </div>
@@ -788,7 +788,7 @@
                          }
                         ?>
                         <?php endif ?>
-                        
+                        <?php ?>
 
 
                     </table>

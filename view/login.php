@@ -1,50 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login Form</title>
-  <link rel="stylesheet" href="../Static/login.css">
-  <link rel="stylesheet" href="../Static/form.scss">
-  <title>Login</title>
-  <!-- <style>
-    .container {
-      width: 300px;
-      padding: 16px;
-      background-color: #f1f1f1;
-    }
-    
-    input[type=text], input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-    
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-    
-    button:hover {
-      opacity: 0.8;
-    }
-    
-    .container {
-      padding: 16px;
-    }
-  </style> -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Static/login.css">
+    <link rel="stylesheet" href="../Static/form.scss">
+    <title>Login</title>
+    <link rel="icon" href="../images/logo.jpg">
 </head>
 <body>
-  <div class="card">
-    <form class="card-form" method="POST" action="../config/login.php">
+
+    <!--Login using username and password. Remember that the POST is being taken to a login.php-->
+<div class="container">
+	<!-- code here -->
+	<div class="card">
+		
+		<form class="card-form" method="POST" action="../config/login.php">
 			<div class="input">
-				<input type="text" class="input-field" name="ID"  required/>
+				<input type="text" class="input-field" name="username"  required/>
 				<label class="input-label">Username</label>
 			</div>
             <div class="input">
@@ -66,7 +40,13 @@
             <div class="action">
                 <input type="submit" class="action-button" value="Login" />
             </div>
-      </form>
-  </div>
+        </form>
+        <div class="card-info">
+            <p href="#">Forgot Password?</p>
+        </div>
+	</div>
+</div>
+
+    </div>
 </body>
 </html>

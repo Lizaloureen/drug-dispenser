@@ -10,7 +10,7 @@ class Database {
         $this->hostname = "localhost";
         $this->username = "root";
         $this->password = "";
-        $this->dbname = "mymedicine";
+        $this->dbname = "my-medicine";
 
         try{
             $this->connection = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", $this->username, $this->password);
@@ -498,6 +498,101 @@ class Database {
             return false;
         }
     }
+// Checking whether a patient exists and confirming their password
+function patientExists($patientID, $patientPassword){
+    //Prepare statement
+    $stmt = $this->connection->prepare("SELECT patientPassword FROM patients WHERE ID = :patientID");
+    $stmt->bindParam(':patientID', $patientID);
 
+    //Execute statement
+    $stmt->execute();
+
+    //Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //Check if the password matches
+    if($result['patientPassword'] === $patientPassword){
+        return true;
+    } else {
+        return false;
+    }
+}
+[02:51, 21/07/2023] Lance: // Checking whether a doctor exists and confirming their password
+    function doctorExists($doctorID, $doctorPassword){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT doctorPassword FROM doctors WHERE ID = :ID");
+        $stmt->bindParam(':ID', $doctorID);
+
+        //Execute statement
+        $stmt->execute();
+
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Check if the password matches
+        if($result['doctorPassword'] === $doctorPassword){
+            return true;
+        } else {
+            return false;
+        }
+    }
+[02:52, 21/07/2023] Lance: // checking whether an admin exists and confirming their password
+    function adminExists($adminID, $adminPassword){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
+        $stmt->bindParam(':ID', $adminID);
+
+        //Execute statement
+        $stmt->execute();
+
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Check if the password matches
+        if($result['adminPassword'] === $adminPassword){
+            return true;
+        } else {
+            return false;
+        }
+    }
+[02:52, 21/07/2023] Lance: // Confirming whether a pharmacy exists and confirming their password
+    function pharmacyExists($ID, $pharmacyPassword){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
+        $stmt->bindParam(':ID', $ID);
+
+        //Execute statement
+        $stmt->execute();
+
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        //Check if the password matches
+        if($result['pharmacyPassword'] === $pharmacyPassword){
+            return true;
+        } else {
+            return false;
+        }
+    }
+[02:52, 21/07/2023] Lance: // check if username and password of company match
+    function companyExists($ID, $companyPassword){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT * FROM companies WHERE ID = :ID AND companyPassword = :companyPassword");
+        $stmt->bindParam(':ID', $ID);
+        $stmt->bindParam(':companyPassword', $companyPassword);
+
+        //Execute statement
+        $stmt->execute();
+
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result){
+            //Return the result
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 ?>

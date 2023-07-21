@@ -38,7 +38,7 @@
 <div>
   <nav class="navbar">
       <!-- LOGO -->
-      <div class="logo">Me-Dawa</div>
+      <div class="logo">My-Medicine</div>
 
       <!-- NAVIGATION MENU -->
       <ul class="nav-links">
