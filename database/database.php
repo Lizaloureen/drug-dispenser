@@ -1,21 +1,23 @@
 <?php
 class Database {
-    private $host = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $dbname = "mymedicine";
-    private $connection;
+    private $hostname;
+    private $username;
+    private $password;
+    private $dbname;
 
-    public function __construct() {
-        $this->connection = new mysqli($this->host, $this->username, $this->password, $this->dbname);
-        if ($this->connection->connect_error) {
-            die("Connection failed: " . $this->connection->connect_error);
+    public function __construct(){
+        $this->hostname = "localhost";
+        $this->username = "root";
+        $this->password = "";
+        $this->dbname = "my-medicine";
+
+        try{
+            $this->connection = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", $this->username, $this->password);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e){
+            echo "Connection failed: " . $e->getMessage();
         }
     }
-
-    /*public function getConnection() {
-        return $this->connection;
-    }*/
 }
 
     // Patient signup
