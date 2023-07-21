@@ -506,11 +506,12 @@
                             </tbody>
                         <?php endif ?>
 
+                        
                         <!--REGISTER PATIENTS-->
-
+                        
                         <?php if($action == 'registerPatients'): ?>
                             <div class="card">
-                            <form class="card-form" method="post" action="../config/patientSignup.php">
+                            <form class="card-form" method="post" action="../view/patientSignup.php">
                                     <div class="input">
                                         <input type="text" class="input-field" name="patientFirstName" value="<?php echo $data['patientFirstName']; ?>" required/>
                                         <label class="input-label">Patient's First Name</label>
@@ -549,14 +550,13 @@
                                     </div>
                                 </form>
                             </div>
-                        ?>
                         <?php endif ?>
                         
                         <!--REGISTER DOCTORS-->
 
                         <?php if($action == 'registerDoctors'): ?>
                             <div class="card">
-                            <form class="card-form" method="post" action="../config/doctorSignup.php">
+                            <form class="card-form" method="post" action="../view/doctorSignup.php">
                                 <div class="input">
                                     <input type="text" class="input-field" name="doctorFirstName" value="" required/>
                                     <label class="input-label">Doctor's First Name</label>
@@ -595,14 +595,13 @@
                                 </div>
                                 </form>
                             </div>
-                        ?>
                         <?php endif ?>
 
                         <!--REGISTER SUPERVISORS-->
 
                         <?php if($action == 'registerSupervisors'): ?>
                             <div class="card">
-                            <form class="card-form" method="post" action="../config/supervisorSignup.php">
+                            <form class="card-form" method="post" action="../view/supervisorSignup.php">
                                 <div class="input">
                                     <input type="text" class="input-field" name="supervisorFirstName" value="<?php echo $data['supervisorFirstName']; ?>" required/>
                                     <label class="input-label">Supervisor's First Name</label>
@@ -641,14 +640,13 @@
                                 </div>
                                 </form> 
                             </div>
-                        ?>
                         <?php endif ?>
 
                         <!--REGISTER PHARMACISTS-->
 
                         <?php if($action == 'registerPharmacists'): ?>
                             <div class="card">
-                            <form class="card-form" method="post" action="../config/pharmacySignup.php">
+                            <form class="card-form" method="post" action="../view/pharmacySignup.php">
                                 <div class="input">
                                     <input type="text" class="input-field" name="pharmacyName" value="<?php echo $data['pharmacyName']; ?>" required/>
                                     <label class="input-label">Pharmacy's Name</label>
@@ -675,14 +673,13 @@
                                 </div>     
                             </form>                              
                             </div>
-                        ?>
                         <?php endif ?>
 
                         <!--REGISTER ADMINS-->
 
                         <?php if($action == 'registerAdmins'): ?>
                             <div class="card">
-                            <form class="card-form" method="post" action="../config/adminSignup.php">
+                            <form class="card-form" method="post" action="../view/adminSignup.php">
                             <div class="input">
                                     <input type="text" class="input-field" name="adminFirstName" value="<?php echo $data['adminFirstName']; ?>" required/>
                                     <label class="input-label">Admin's First Name</label>
@@ -721,7 +718,6 @@
                                 </div>
                             </form>                                
                             </div>
-                        ?>
                         <?php endif ?>
 
                         <!-- UPDATE DRUGS -->

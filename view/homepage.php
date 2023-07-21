@@ -17,16 +17,14 @@
     <nav class="navbar">
       <!-- LOGO image-->
       <div class="logo">My medicine</div>
-
-      <!-- NAVIGATION MENU -->
-      <ul class="nav-links">
-
         <!-- NAVIGATION MENUS -->
         <div class="menu">
+          <!-- NAVIGATION MENU -->
+            <ul class="nav-links">
             <li><a href="./login.php">Login</a></li>
             <li><a href="./signup.php">Sign Up</a></li>
+            </ul>
         </div>
-      </ul>
     </nav>
   </div>
 
@@ -43,6 +41,7 @@
         </div>
       </div>
     </div>
+
     <div class="row">
       <div class="col">
         <img src=".\drug-dispenser\patient.jpeg" alt="Photo 2" class="photo-right">
@@ -50,19 +49,21 @@
           <h2>Trusted by Patients worldwide</h2>
           <p>Get a secure platform to view your prescriptions</p>
         </div>
-      
       </div>
     </div>
+    
     <div class="row">
       <div class="col">
         <img src=".\drug-dispenser\image3.jpeg" alt="Photo 3" class="photo-left">
         <div class="text-right">
-          <h2>Security</h2>
+          <h2>Ensurance</h2>
           <p>Doctors also get a platform to track their patients prescriptions</p>
         </div>
       </div>
     </div>
   </div>
+
+  <br>
 
   <!--The footer-->
   <footer class="footer">
