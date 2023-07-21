@@ -13,9 +13,9 @@ class Database {
         }
     }
 
-    public function getConnection() {
+    /*public function getConnection() {
         return $this->connection;
-    }
+    }*/
 }
 
     // Patient signup
@@ -354,7 +354,7 @@ class Database {
     }
 
     // Select everything from entity
-    public function getEntity($entity){
+    function getEntity($entity){
         // Prepare statement
         $stmt = $this->connection->prepare("SELECT * FROM $entity");
     
