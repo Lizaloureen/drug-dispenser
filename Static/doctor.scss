@@ -15,9 +15,9 @@ html {
     width: 400px;
     padding: 40px;
     transform: translate(-50%, -50%);
-    background: rgba(0,0,0,.5);
+    background: rgb(81, 104, 53);
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgb(55, 47, 47);
     border-radius: 10px;
   }
   
@@ -58,7 +58,7 @@ html {
   .login-box .user-box input:valid ~ label {
     top: -20px;
     left: 0;
-    color: #03e9f4;
+    color: #bd41f1;
     font-size: 12px;
   }
   
@@ -66,7 +66,7 @@ html {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
-    color: #03e9f4;
+    color: #903dfe;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -77,13 +77,13 @@ html {
   }
   
   .login-box a:hover {
-    background: #03e9f4;
+    background: #cbf2b6;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 5px #03e9f4,
-                0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
-                0 0 100px #03e9f4;
+    box-shadow: 0 0 5px #f6e7b2,
+                0 0 25px #f6e7b2,
+                0 0 50px #f6e7b2,
+                0 0 100px #f6e7b2;
   }
   
   .login-box a span {
@@ -114,7 +114,7 @@ html {
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #03e9f4);
+    background: linear-gradient(180deg, transparent, #ec9209);
     animation: btn-anim2 1s linear infinite;
     animation-delay: .25s
   }
@@ -133,7 +133,7 @@ html {
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(270deg, transparent, #03e9f4);
+    background: linear-gradient(270deg, transparent, #ec9209);
     animation: btn-anim3 1s linear infinite;
     animation-delay: .5s
   }
@@ -152,7 +152,7 @@ html {
     left: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(360deg, transparent, #03e9f4);
+    background: linear-gradient(360deg, transparent, #ec9209);
     animation: btn-anim4 1s linear infinite;
     animation-delay: .75s
   }
