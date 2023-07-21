@@ -51,7 +51,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="row">
       <div class="col">
         <img src=".\drug-dispenser\image3.jpeg" alt="Photo 3" class="photo-left">

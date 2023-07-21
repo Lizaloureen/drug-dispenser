@@ -507,6 +507,7 @@
                         <?php endif ?>
 
                         
+
                         <!--REGISTER PATIENTS-->
                         
                         <?php if($action == 'registerPatients'): ?>
