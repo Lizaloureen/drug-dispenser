@@ -1,54 +1,41 @@
 <?php
 class Database {
-    private $hostname;
-    private $username;
-    private $password;
-    private $dbname;
+    private $host = "localhost";
+    private $username = "root";
+    private $password = "";
+    private $dbname = "mymedicine";
     private $connection;
 
-    public function __construct(){
-        $this->hostname = "localhost";
-        $this->username = "root";
-        $this->password = "";
-        $this->dbname = "my-medicine";
-
-        try{
-            $this->connection = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", $this->username, $this->password);
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch(PDOException $e){
-            echo "Connection failed: " . $e->getMessage();
+    public function __construct() {
+        $this->connection = new mysqli($this->host, $this->username, $this->password, $this->dbname);
+        if ($this->connection->connect_error) {
+            die("Connection failed: " . $this->connection->connect_error);
         }
     }
 
+    public function getConnection() {
+        return $this->connection;
+    }
+}
+
     // Patient signup
-    public function patientSignup($patientID, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender){
+    public function patientSignup($patientFirstName, $patientLastName, $patientEmail, $patientPassword, $patientPhoneNumber, $patientAddress, $patientGender, $patientDOB) {
+        global $database; // Make the $database variable accessible inside the function
         try {
-            $stmt = $this->connection->prepare("INSERT INTO patient (patientID, Name, phoneNumber, password, address, Gender) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$patientID, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender]);
+            $stmt = $database->getConnection()->prepare("INSERT INTO patients (patientFirstName, patientLastName, patientEmail, patientPassword, patientPhoneNumber, patientAddress, patientGender, patientDOB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$patientFirstName, $patientLastName, $patientEmail, $patientPassword, $patientPhoneNumber, $patientAddress, $patientGender, $patientDOB]);
             return true; // Return true if the signup was successful
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false;
         }        
     }
 
     // Doctor signup
-    public function doctorSignup($docID, $doctorName, $doctorPhoneNumber, $Dpassword, $doctorAddress, $doctorGender){
+    public function doctorSignup($doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB){
         try {
-            $stmt = $this->connection->prepare("INSERT INTO doctor (docID, Name, phoneNumber, password, address, Gender) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$docID, $doctorName, $doctorPhoneNumber, $Dpassword, $doctorAddress, $doctorGender]);
-            return true; // Return true if the signup was successful
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            return false;
-        }        
-    }
-
-    // Pharmaceutical Company signup
-    public function PharmaceuticalCompanySignup($pcID, $pcName, $address, $PhoneNo, $pharmaceuticalPassword){
-        try {
-            $stmt = $this->connection->prepare("INSERT INTO pharmaceuticalcompany(pcID, pcName, address, PhoneNo, Password) VALUES (?, ?, ?, ?, ?)");
-            $stmt->execute([$pcID, $pcName, $address, $PhoneNo, $pharmaceuticalPassword]);
+            $stmt = $this->connection->prepare("INSERT INTO doctors (doctorFirstName, doctorLastName, doctorEmail, doctorPassword, doctorPhoneNumber, doctorAddress, doctorGender, doctorDOB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB]);
             return true; // Return true if the signup was successful
         } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -57,22 +44,10 @@ class Database {
     }
 
     // Pharmacy signup
-    public function PharmacySignup($pharmacyName, $phID, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword){
+    public function pharmacySignup($pharmacyName, $pharmacyEmail, $pharmacyPassword, $pharmacyPhoneNumber, $pharmacyAddress){
         try {
-            $stmt = $this->connection->prepare("INSERT INTO pharmacy (Name, phID, phoneNo, profitPercentage, drugTradeName, address, Password) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$pharmacyName, $phID, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword]);
-            return true; // Return true if the signup was successful
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            return false;
-        }        
-    }
-
-    // Staff signup
-    public function StaffSignup($staffno, $name, $prescriptionno, $salary, $bonus, $staffPassword){
-        try {
-            $stmt = $this->connection->prepare("INSERT INTO staff (staffno, name, prescriptionno, salary, bonus, Password) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$staffno, $name, $prescriptionno, $salary, $bonus, $staffPassword]);
+            $stmt = $this->connection->prepare("INSERT INTO pharmacy (pharmacyName, pharmacyEmail, pharmacyPassword, pharmacyPhoneNumber, pharmacyAddress) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$pharmacyName, $pharmacyEmail, $pharmacyPassword, $pharmacyPhoneNumber, $pharmacyAddress]);
             return true; // Return true if the signup was successful
         } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -594,4 +569,4 @@ function patientExists($patientID, $patientPassword){
         }
     }
 }
-{ ?>
+?>

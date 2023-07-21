@@ -32,10 +32,10 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <img src=".\drug-dispenser\doctor.jpeg" alt="Photo 1" class="photo-left">
         <div class="text-right">
             <div class="text-wrap">
             <h2>Haven for doctors</h2>
+            <img src=".\drug-dispenser\doctor.jpeg" alt="Photo 1" class="photo-left">
             <p>Bringing a whole new view to drug dispensation.</p>
           </div>
         </div>
@@ -44,9 +44,9 @@
 
     <div class="row">
       <div class="col">
-        <img src=".\drug-dispenser\patient.jpeg" alt="Photo 2" class="photo-right">
         <div class="text-left">
           <h2>Trusted by Patients worldwide</h2>
+          <img src=".\drug-dispenser\patient.jpeg" alt="Photo 2" class="photo-right">
           <p>Get a secure platform to view your prescriptions</p>
         </div>
       </div>
@@ -54,15 +54,17 @@
 
     <div class="row">
       <div class="col">
-        <img src=".\drug-dispenser\image3.jpeg" alt="Photo 3" class="photo-left">
         <div class="text-right">
           <h2>Ensurance</h2>
+          <img src=".\drug-dispenser\image3.jpeg" alt="Photo 3" class="photo-left">
           <p>Doctors also get a platform to track their patients prescriptions</p>
         </div>
       </div>
     </div>
   </div>
 
+  <br>
+  <br>
   <br>
 
   <!--The footer-->

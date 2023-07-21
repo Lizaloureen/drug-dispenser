@@ -67,20 +67,9 @@
   display: block;
   }
 
-
-@keyframes rotate360 {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(-360deg);
-  }
-}
-
-
 /* The main content */
 .container {
-  max-width: 800px;
+  max-width: 80px;
   margin: 0 auto;
   /*padding-top: 500px;*/
   padding-bottom: 10px;
