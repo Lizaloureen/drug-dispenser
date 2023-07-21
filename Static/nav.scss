@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    background-color: #331;
+    background-color: rgb(176, 78, 36);
     color: #fff;
     }
     
@@ -25,7 +25,7 @@
     }
     
     .menu li:hover {
-    background-color: #141e30;
+    background-color: #192a4a;
     border-radius: 5px;
     transition: 0.3s ease;
     }
@@ -40,7 +40,7 @@
     }
     
     .dropdown {
-    background-color: #141e30;
+    background-color: #702771;
     padding: 1em 0;
     position: absolute; /*WITH RESPECT TO PARENT*/
     display: none;
@@ -59,7 +59,7 @@
     }
     
     .dropdown li:hover {
-    background-color: #141e30;
+    background-color: #823f22;
     }
     
     .services:hover .dropdown {

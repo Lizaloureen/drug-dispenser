@@ -7,7 +7,7 @@
 body {
 	font-family: "DM Sans", sans-serif;
 	line-height: 1.5;
-	background-color: #f1f3fb;
+	background-color: #e5e9f8;
 	padding: 0 2rem;
 }
 
@@ -29,9 +29,9 @@ input {
 	flex-direction: column;
 	width: 100%;
 	max-width: 425px;
-	background-color: #FFF;
+	background-color: #fad8d8;
 	border-radius: 10px;
-	box-shadow: 0 10px 20px 0 rgba(#999, .25);
+	box-shadow: 0 10px 20px 0 rgba(#cdb7b7, .25);
 	padding: .75rem;
 }
 
@@ -53,7 +53,7 @@ input {
 	right: 10%;
 	font-size: 1.75rem;
 	font-weight: 700;
-	color: #735400;
+	color: #b09a5c;
 	line-height: 1.222;
 	small {
 		display: block;
@@ -78,7 +78,7 @@ input {
 }
 
 .input-label {
-	color: #8597a3;
+	color: #9cb4c4;
 	position: absolute;
 	top: 1.5rem;
 	transition: .25s ease;
@@ -88,15 +88,15 @@ input {
 	border: 0;
 	z-index: 1;
 	background-color: transparent;
-	border-bottom: 2px solid #eee; 
+	border-bottom: 2px solid #d8f1de; 
 	font: inherit;
 	font-size: 1.125rem;
 	padding: .25rem 0;
 	&:focus, &:valid {
 		outline: 0;
-		border-bottom-color: #666;
+		border-bottom-color: #777272;
 		&+.input-label {
-			color: #666;
+			color: #786d6d;
 			transform: translateY(-1.5rem);
 		}
 	}
@@ -112,9 +112,9 @@ input {
 	padding: 1em;
 	width: 100%;
 	font-weight: 500;
-	background-color: #666;
+	background-color: #8a8282;
 	border-radius: 6px;
-	color: #FFF;
+	color: #fad2d2;
 	border: 0;
 	&:focus {
 		outline: 0;
@@ -125,16 +125,16 @@ input {
 	padding: 1rem 1rem;
 	text-align: center;
 	font-size: .875rem;
-	color: #8597a3;
+	color: #cfe4f2;
 	a {
 		display: block;
-		color: #6658d3;
+		color: #533ef5;
 		text-decoration: none;
 	}
 }
 
 .card-info-text {
-    text-emphasis-color: #666;
+    text-emphasis-color: #756363;
     font-weight: 500;
 }
 
