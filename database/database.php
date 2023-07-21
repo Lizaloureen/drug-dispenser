@@ -517,7 +517,7 @@ function patientExists($patientID, $patientPassword){
         return false;
     }
 }
-[02:51, 21/07/2023] Lance: // Checking whether a doctor exists and confirming their password
+ // Checking whether a doctor exists and confirming their password
     function doctorExists($doctorID, $doctorPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT doctorPassword FROM doctors WHERE ID = :ID");
@@ -536,7 +536,7 @@ function patientExists($patientID, $patientPassword){
             return false;
         }
     }
-[02:52, 21/07/2023] Lance: // checking whether an admin exists and confirming their password
+ // checking whether an admin exists and confirming their password
     function adminExists($adminID, $adminPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
@@ -554,8 +554,7 @@ function patientExists($patientID, $patientPassword){
         } else {
             return false;
         }
-    }
-[02:52, 21/07/2023] Lance: // Confirming whether a pharmacy exists and confirming their password
+         // Confirming whether a pharmacy exists and confirming their password
     function pharmacyExists($ID, $pharmacyPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
@@ -574,7 +573,7 @@ function patientExists($patientID, $patientPassword){
             return false;
         }
     }
-[02:52, 21/07/2023] Lance: // check if username and password of company match
+ // check if username and password of company match
     function companyExists($ID, $companyPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT * FROM companies WHERE ID = :ID AND companyPassword = :companyPassword");
@@ -595,4 +594,4 @@ function patientExists($patientID, $patientPassword){
         }
     }
 }
-?>
+{ ?>
