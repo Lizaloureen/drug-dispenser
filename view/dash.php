@@ -591,7 +591,6 @@
                                     <label class="input-label">Doctor's DOB</label>
                                 </div>
                                 <div class="action">
-                                    
                                     <input type="hidden" name="type" value="doctorSignup">
                                     <input type="submit" class="action-button" name="doctorSignup" value="Doctor Signup">
                                 </div>

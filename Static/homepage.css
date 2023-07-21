@@ -5,7 +5,7 @@
   justify-content: space-between;
   padding: 20px;
   background-color: #333;
-  color: #fff;
+  color: #d59e9e;
   }
   
   .nav-links a {
@@ -43,7 +43,7 @@
   .dropdown {
   background-color: #333;
   padding: 1em 0;
-  position: absolute; /WITH RESPECT TO PARENT/
+  position: absolute;
   display: none;
   border-radius: 8px;
   top: 35px;
@@ -68,78 +68,6 @@
   }
 
 
-
-
-/* The carousel */
-body {
-  margin: 0;
-  background: lightgray;
-  text-align: center;
-  font-family: sans-serif;
-  color: #fefefe;
-}
-.carousel-container {
-  position: relative;
-  width: 320px;
-  margin: 100px auto 0 auto;
-  perspective: 1000px;
-}
-
-.carousel {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d; 
-  animation: rotate360 60s infinite forwards linear;
-}
-.carousel__face { 
-  position: absolute;
-  width: 300px;
-  height: 187px;
-  top: 20px;
-  left: 10px;
-  right: 10px;
-  background-size: cover;
-  box-shadow:inset 0 0 0 2000px rgba(0,0,0,0.5);
-  display: flex;
-}
-
-span {
-  margin: auto;
-  font-size: 2rem;
-}
-
-
-.carousel__face:nth-child(1) {
-  background-image: url("../images/cPics/pexels-castorly-stock-4058364.jpg");
-  transform: rotateY(  0deg) translateZ(430px); }
-.carousel__face:nth-child(2) { 
-  background-image: url("../images/cPics/pexels-karolina-grabowska-4047055.jpg");
-    transform: rotateY( 40deg) translateZ(430px); }
-.carousel__face:nth-child(3) {
-  background-image: url("../images/cPics/pexels-mart-production-7089401.jpg");
-  transform: rotateY( 80deg) translateZ(430px); }
-.carousel__face:nth-child(4) {
-  background-image: url("../images/cPics/pexels-pixabay-356040.jpg");
-  transform: rotateY(120deg) translateZ(430px); }
-.carousel__face:nth-child(5) { 
-  background-image: url("../images/cPics/zz.jpg");
- transform: rotateY(160deg) translateZ(430px); }
-.carousel__face:nth-child(6) { 
-  background-image: url("../images/cPics/pexels-rfstudio-3825529.jpg");
- transform: rotateY(200deg) translateZ(430px); }
-.carousel__face:nth-child(7) { 
-  background-image: url("../images/cPics/zz2.jpg");
- transform: rotateY(240deg) translateZ(430px); }
-.carousel__face:nth-child(8) {
-  background-image: url("../images/cPics/zz3.jpg");
-  transform: rotateY(280deg) translateZ(430px); }
-.carousel__face:nth-child(9) {
-  background-image: url("../images/cPics/pexels-pixabay-139398.jpg");
-  transform: rotateY(320deg) translateZ(430px); }
-
-
-
 @keyframes rotate360 {
   from {
     transform: rotateY(0deg);
@@ -150,12 +78,11 @@ span {
 }
 
 
-
 /* The main content */
 .container {
   max-width: 800px;
   margin: 0 auto;
-  /padding-top: 500px;/
+  /*padding-top: 500px;*/
   padding-bottom: 10px;
 }
 

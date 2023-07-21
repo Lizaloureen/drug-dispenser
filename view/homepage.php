@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../Static/homepage.css">
   <link rel="stylesheet" href="\Static\homepage.css">
   <title>Homepage</title>
-  <link rel="icon" href="C:\xampp1\htdocs\drug dispensing\drug-dispenser\logo.jpg">
+  <link rel="icon" href=".\drug-dispenser\logo.jpg">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        <img src="C:\xampp1\htdocs\drug dispensing\drug-dispenser\doctor.jpeg" alt="Photo 1" class="photo-left">
+        <img src=".\drug-dispenser\doctor.jpeg" alt="Photo 1" class="photo-left">
         <div class="text-right">
             <div class="text-wrap">
             <h2>Haven for doctors</h2>
@@ -45,7 +45,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <img src="C:\xampp1\htdocs\drug dispensing\drug-dispenser\patient.jpeg" alt="Photo 2" class="photo-right">
+        <img src=".\drug-dispenser\patient.jpeg" alt="Photo 2" class="photo-right">
         <div class="text-left">
           <h2>Trusted by Patients worldwide</h2>
           <p>Get a secure platform to view your prescriptions</p>
@@ -55,7 +55,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <img src="C:\xampp1\htdocs\drug dispensing\drug-dispenser\image3.jpeg" alt="Photo 3" class="photo-left">
+        <img src=".\drug-dispenser\image3.jpeg" alt="Photo 3" class="photo-left">
         <div class="text-right">
           <h2>Security</h2>
           <p>Doctors also get a platform to track their patients prescriptions</p>
@@ -96,9 +96,7 @@
       </div>
     </div>
   </footer>
-  
-  
-  
+
 </body>
 
 </html>
