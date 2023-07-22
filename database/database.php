@@ -31,10 +31,6 @@ class Database {
         }        
     }
 
-    // Doctor signup
-    class Database {
-        // ... (other code)
-    
         // Doctor signup
         function doctorSignup($doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB) {
             try {
@@ -48,7 +44,7 @@ class Database {
         }
 
     // Pharmacy signup
-        public function adminExists($adminID, $adminPassword){
+        function adminExists($adminID, $adminPassword){
             //Prepare statement
             $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
             $stmt->bindParam(':ID', $adminID);
@@ -66,10 +62,7 @@ class Database {
                 return false;
             }
         }
-    }
     
-    
-
     //Login using ID and password for patients
     // Checking whether a patient exists and confirming their password
     function patientLogin($ID, $patientPassword){
@@ -545,7 +538,7 @@ function patientExists($patientID, $patientPassword){
         }
     }
  // checking whether an admin exists and confirming their password
-    function adminExists($adminID, $adminPassword){
+    /*function adminExists($adminID, $adminPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
         $stmt->bindParam(':ID', $adminID);
@@ -561,7 +554,8 @@ function patientExists($patientID, $patientPassword){
             return true;
         } else {
             return false;
-        }
+        }*/
+
          // Confirming whether a pharmacy exists and confirming their password
     function pharmacyExists($ID, $pharmacyPassword){
         //Prepare statement
@@ -601,9 +595,6 @@ function patientExists($patientID, $patientPassword){
             return false;
         }
     }
-}
-
-
 // Confirming whether a pharmacy exists and confirming their password
 function pharmacyExists($ID, $pharmacyPassword){
     //Prepare statement
@@ -623,4 +614,25 @@ function pharmacyExists($ID, $pharmacyPassword){
         return false;
     }
 }
- ?>
+
+// checking whether an admin exists and confirming their password
+function adminExists($adminID, $adminPassword){
+    //Prepare statement
+    $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
+    $stmt->bindParam(':ID', $adminID);
+
+    //Execute statement
+    $stmt->execute();
+
+    //Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //Check if the password matches
+    if($result['adminPassword'] === $adminPassword){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+?>
