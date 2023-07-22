@@ -43,8 +43,7 @@ class Database {
             }        
         }
 
-    // Pharmacy signup
-        function adminExists($adminID, $adminPassword){
+        /*function adminExists($adminID, $adminPassword){
             //Prepare statement
             $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
             $stmt->bindParam(':ID', $adminID);
@@ -61,7 +60,7 @@ class Database {
             } else {
                 return false;
             }
-        }
+        }*/
     
     //Login using ID and password for patients
     // Checking whether a patient exists and confirming their password
