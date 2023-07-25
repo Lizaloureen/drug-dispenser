@@ -1,67 +1,91 @@
 <?php
 class Database {
-    private $host = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $dbname = "mymedicine";
+    private $hostname;
+    private $username;
+    private $password;
+    private $dbname;
     private $connection;
 
-    public function __construct() {
-        $this->connection = new mysqli($this->host, $this->username, $this->password, $this->dbname);
-        if ($this->connection->connect_error) {
-            die("Connection failed: " . $this->connection->connect_error);
+    public function __construct(){
+        $this->hostname = "localhost";
+        $this->username = "root";
+        $this->password = "";
+        $this->dbname = "mymedicine";
+
+        try{
+            $this->connection = new PDO("mysql:host=$this->hostname;dbname=$this->dbname", $this->username, $this->password);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e){
+            echo "Connection failed: " . $e->getMessage();
         }
     }
 
-    public function getConnection() {
-        return $this->connection;
-    }
-}
-
     // Patient signup
-    function patientSignup($patientFirstName, $patientLastName, $patientEmail, $patientPassword, $patientPhoneNumber, $patientAddress, $patientGender, $patientDOB) {
-        global $database; // Make the $database variable accessible inside the function
+    public function patientSignup($patientID, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender){
         try {
-            $stmt = $database->getConnection()->prepare("INSERT INTO patients (patientFirstName, patientLastName, patientEmail, patientPassword, patientPhoneNumber, patientAddress, patientGender, patientDOB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$patientFirstName, $patientLastName, $patientEmail, $patientPassword, $patientPhoneNumber, $patientAddress, $patientGender, $patientDOB]);
+            $stmt = $this->connection->prepare("INSERT INTO patient (patientID, Name, phoneNumber, password, address, Gender) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$patientID, $patientName, $patientPhoneNumber, $Ppassword, $patientAddress, $patientGender]);
             return true; // Return true if the signup was successful
-        } catch (PDOException $e) {
+        } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
             return false;
         }        
     }
 
-        // Doctor signup
-        function doctorSignup($doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB) {
-            try {
-                $stmt = $this->connection->prepare("INSERT INTO doctors (doctorFirstName, doctorLastName, doctorEmail, doctorPassword, doctorPhoneNumber, doctorAddress, doctorGender, doctorDOB) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB]);
-                return true; // Return true if the signup was successful
-            } catch(PDOException $e) {
-                echo "Error: " . $e->getMessage();
-                return false;
-            }        
-        }
+    // Doctor signup
+    //Signing up a new doctor
+    function doctorSignup($doctorFirstName, $doctorLastName, $doctorEmail, $doctorPassword, $doctorPhoneNumber, $doctorAddress, $doctorGender, $doctorDOB){
+        //Prepare statement
+        $stmt = $this->connection->prepare("INSERT INTO doctors (doctorFirstName, doctorLastName, doctorEmail, doctorPassword, doctorPhoneNumber, doctorAddress, doctorGender, doctorDOB) VALUES (:doctorFirstName, :doctorLastName, :doctorEmail, :doctorPassword, :doctorPhoneNumber, :doctorAddress, :doctorGender, :doctorDOB)");
+        $stmt->bindParam(':doctorFirstName', $doctorFirstName);
+        $stmt->bindParam(':doctorLastName', $doctorLastName);
+        $stmt->bindParam(':doctorEmail', $doctorEmail);
+        $stmt->bindParam(':doctorPassword', $doctorPassword);
+        $stmt->bindParam(':doctorPhoneNumber', $doctorPhoneNumber);
+        $stmt->bindParam(':doctorAddress', $doctorAddress);
+        $stmt->bindParam(':doctorGender', $doctorGender);
+        $stmt->bindParam(':doctorDOB', $doctorDOB);
 
-        /*function adminExists($adminID, $adminPassword){
-            //Prepare statement
-            $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
-            $stmt->bindParam(':ID', $adminID);
-    
-            //Execute statement
-            $stmt->execute();
-    
-            //Fetch the result
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    
-            //Check if the password matches
-            if($result && $result['adminPassword'] === $adminPassword){
-                return true;
-            } else {
-                return false;
-            }
-        }*/
-    
+        //Execute statement
+        $stmt->execute();
+    }
+
+    // Pharmaceutical Company signup
+     function PharmaceuticalCompanySignup($pcID, $pcName, $address, $PhoneNo, $pharmaceuticalPassword){
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO pharmaceuticalcompany(pcID, pcName, address, PhoneNo, Password) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$pcID, $pcName, $address, $PhoneNo, $pharmaceuticalPassword]);
+            return true; // Return true if the signup was successful
+        } catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }        
+    }
+
+    // Pharmacy signup
+     function PharmacySignup($pharmacyName, $phID, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword){
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO pharmacy (Name, phID, phoneNo, profitPercentage, drugTradeName, address, Password) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$pharmacyName, $phID, $phoneNo, $profitPercentage, $drugTradeName, $address, $pharmacyPassword]);
+            return true; // Return true if the signup was successful
+        } catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }        
+    }
+
+    // Staff signup
+     function StaffSignup($staffno, $name, $prescriptionno, $salary, $bonus, $staffPassword){
+        try {
+            $stmt = $this->connection->prepare("INSERT INTO staff (staffno, name, prescriptionno, salary, bonus, Password) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$staffno, $name, $prescriptionno, $salary, $bonus, $staffPassword]);
+            return true; // Return true if the signup was successful
+        } catch(PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }        
+    }
+
     //Login using ID and password for patients
     // Checking whether a patient exists and confirming their password
     function patientLogin($ID, $patientPassword){
@@ -84,7 +108,7 @@ class Database {
     }
 
     //Login using ID and password for patients
-    function adminLogin($ID, $password)
+     function adminLogin($ID, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
@@ -105,7 +129,7 @@ class Database {
     }
 
     // Login using ID and password for doctors
-    function doctorLogin($ID, $password)
+     function doctorLogin($ID, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT doctorPassword FROM doctors WHERE ID = :ID");
@@ -126,7 +150,7 @@ class Database {
     }
 
     //Login using ID and password for pharmaceutical companies
-    function pharmaceuticalcompanyLogin($ID, $password)
+     function pharmaceuticalcompanyLogin($ID, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT companyPassword FROM companies WHERE ID = :ID");
@@ -147,7 +171,7 @@ class Database {
     }
 
     //Login using ID and password for pharmacies
-    function pharmacyLogin($ID, $password)
+     function pharmacyLogin($ID, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
@@ -168,7 +192,7 @@ class Database {
     }
 
     //Login using ID and password for staff
-    function staffLogin($staffno, $password)
+     function staffLogin($staffno, $password)
     {
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT staffPassword FROM staff WHERE ID = :ID");
@@ -187,6 +211,7 @@ class Database {
             return false;
         }        
     }
+
 
 
 
@@ -386,6 +411,7 @@ class Database {
         return $result;
     }
 
+
     //Adding meds to the database (Pharmaceuticals)
     function addMeds($drugName, $drugDescription, $drugPrice, $drugQuantity, $drugExpirationDate, $drugManufacturingDate, $drugCompany){
         //Prepare statement
@@ -517,6 +543,7 @@ function patientExists($patientID, $patientPassword){
         return false;
     }
 }
+
  // Checking whether a doctor exists and confirming their password
     function doctorExists($doctorID, $doctorPassword){
         //Prepare statement
@@ -535,28 +562,11 @@ function patientExists($patientID, $patientPassword){
         } else {
             return false;
         }
+
     }
- // checking whether an admin exists and confirming their password
-    /*function adminExists($adminID, $adminPassword){
-        //Prepare statement
-        $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
-        $stmt->bindParam(':ID', $adminID);
-
-        //Execute statement
-        $stmt->execute();
-
-        //Fetch the result
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        //Check if the password matches
-        if($result['adminPassword'] === $adminPassword){
-            return true;
-        } else {
-            return false;
-        }*/
-
+    
          // Confirming whether a pharmacy exists and confirming their password
-    function pharmacyExists($ID, $pharmacyPassword){
+        function pharmacyExists($ID, $pharmacyPassword){
         //Prepare statement
         $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
         $stmt->bindParam(':ID', $ID);
@@ -594,44 +604,120 @@ function patientExists($patientID, $patientPassword){
             return false;
         }
     }
-// Confirming whether a pharmacy exists and confirming their password
-function pharmacyExists($ID, $pharmacyPassword){
-    //Prepare statement
-    $stmt = $this->connection->prepare("SELECT pharmacyPassword FROM pharmacies WHERE ID = :ID");
-    $stmt->bindParam(':ID', $ID);
 
-    //Execute statement
-    $stmt->execute();
-
-    //Fetch the result
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    //Check if the password matches
-    if($result['pharmacyPassword'] === $pharmacyPassword){
-        return true;
-    } else {
-        return false;
-    }
 }
 
-// checking whether an admin exists and confirming their password
-function adminExists($adminID, $adminPassword){
-    //Prepare statement
-    $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
-    $stmt->bindParam(':ID', $adminID);
+    //checking whether an admin exists and confirming their password
+    function AdminExists($adminID, $adminPassword){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT adminPassword FROM admins WHERE ID = :ID");
+        $stmt->bindParam(':ID', $adminID);
 
-    //Execute statement
-    $stmt->execute();
+        //Execute statement
+        $stmt->execute();
 
-    //Fetch the result
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    //Check if the password matches
-    if($result['adminPassword'] === $adminPassword){
-        return true;
-    } else {
-        return false;
+        //Check if the password matches
+        if($result['adminPassword'] === $adminPassword){
+            return true;
+        } else {
+            return false;
+        }
     }
-}
+     // get admin id
+    function getAdminId($adminEmail){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT ID FROM admins WHERE adminEmail = :adminEmail");
+        $stmt->bindParam(':adminEmail', $adminEmail);
 
-?>
+        //Execute statement
+        $stmt->execute();
+
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result){
+            //Return the result
+            return $result['ID'];
+        } else {
+            return false;
+        }
+    }
+// This get the doctor id generated by the triggers
+    function getDoctorId($doctorEmail){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT ID FROM doctors WHERE doctorEmail = :doctorEmail");
+        $stmt->bindParam(':doctorEmail', $doctorEmail);
+
+        //Execute statement
+        $stmt->execute();
+
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result){
+            //Return the result
+            return $result['ID'];
+        } else {
+            return false;
+        }
+    }
+ // This get the patient id generated by the triggers
+    function getPatientId($patientEmail){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT ID FROM patients WHERE patientEmail = :patientEmail");
+        $stmt->bindParam(':patientEmail', $patientEmail);
+
+        //Execute statement
+        $stmt->execute();
+
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result){
+            //Return the result
+            return $result['ID'];
+        } else {
+            return false;
+        }
+    }
+    // This get the company id generated by the triggers
+    function getCompanyId($companyEmail){
+        //Prepare statement
+        $stmt = $this->connection->prepare("SELECT ID FROM companies WHERE companyEmail = :companyEmail");
+        $stmt->bindParam(':companyEmail', $companyEmail);
+
+        //Execute statement
+        $stmt->execute();
+
+        //Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result){
+            //Return the result
+            return $result['ID'];
+        } else {
+            return false;
+        }
+    }
+ // get the pharmacyID from pharmacies
+    function getPharmacyID($pharmacyEmail){
+        $stmt = $this->connection->prepare("SELECT ID FROM pharmacies WHERE pharmacyEmail = :pharmacyEmail");
+        $stmt->bindParam(':pharmacyEmail', $pharmacyEmail);
+
+        // Execute statement
+        $stmt->execute();
+
+        // Fetch the result
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if($result){
+            return $result['ID'];
+        } else {
+            return false;
+        }
+    }
+
+ ?>
