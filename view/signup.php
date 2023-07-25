@@ -8,11 +8,11 @@
     <form>
         <select id="redirectDropdown" onchange="redirectToLink()">
             <option value="">Select an option</option>
-            <option value="./drug-dispenser/view/patientSignup.php">Patient</option>
-            <option value="./drug-dispenser/view/doctorSignup.php">Doctor</option>
-            <option value="./drug-dispenser/view/supervisorSignup.php">Supervisor</option>
-            <option value="./drug-dispenser/view/pharmacySignup.php">Pharmacist</option>
-            <option value="./drug-dispenser/view/adminSignup.php">Admin</option>
+            <option value="../../drug-dispenser/view/patient-view-signup.php">Patient</option>
+            <option value="../../drug-dispenser/view/doctor-view-signup.php">Doctor</option>
+            <option value="../../drug-dispenser/view/supervisor-view-signup.php">Supervisor</option>
+            <option value="../../drug-dispenser/view/pharmacy-view-signup.php">Pharmacist</option>
+            <option value="../../drug-dispenser/view/admin-view-signup.php">Admin</option>
         </select>
     </form>
 

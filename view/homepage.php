@@ -5,18 +5,17 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../Static/homepage.css">
-  <link rel="stylesheet" href="\Static\homepage.css">
   <title>Homepage</title>
   <link rel="icon" href=".\drug-dispenser\logo.jpg">
+  <link rel="stylesheet" href="../Static/homepage.css">
 </head>
 
-<body>
+<body style="margin: 0;">
   <!--The Navigation Bar-->
   <div>
     <nav class="navbar">
       <!-- LOGO image-->
-      <div class="logo">My medicine</div>
+      <div class="logo" style="color: black; font-size:50px;">My medicine</div>
         <!-- NAVIGATION MENUS -->
         <div class="menu">
           <!-- NAVIGATION MENU -->
@@ -29,13 +28,13 @@
   </div>
 
   <!--The main content-->
-  <div class="container">
+  <div class="container" style="margin-top: -500px;">
     <div class="row">
       <div class="col">
         <div class="text-right">
             <div class="text-wrap">
             <h2>Haven for doctors</h2>
-            <img src=".\drug-dispenser\doctor.jpeg" alt="Photo 1" class="photo-left">
+            <img src="../doctor.jpeg" alt="Photo 1" class="photo-left">
             <p>Bringing a whole new view to drug dispensation.</p>
           </div>
         </div>
@@ -46,7 +45,7 @@
       <div class="col">
         <div class="text-left">
           <h2>Trusted by Patients worldwide</h2>
-          <img src=".\drug-dispenser\patient.jpeg" alt="Photo 2" class="photo-right">
+          <img src="../patient.jpeg" alt="Photo 2" class="photo-right">
           <p>Get a secure platform to view your prescriptions</p>
         </div>
       </div>
@@ -56,7 +55,7 @@
       <div class="col">
         <div class="text-right">
           <h2>Ensurance</h2>
-          <img src=".\drug-dispenser\image3.jpeg" alt="Photo 3" class="photo-left">
+          <img src="../image3.jpeg" alt="Photo 3" class="photo-left">
           <p>Doctors also get a platform to track their patients prescriptions</p>
         </div>
       </div>
@@ -94,7 +93,7 @@
       </div>
       <div class="row">
         <div class="footer-col">
-          <p>&copy; 2023 Me-Dawa. All rights reserved.</p>
+          <p>&copy; 2023 My-Medicine. All rights reserved.</p>
         </div>
       </div>
     </div>
